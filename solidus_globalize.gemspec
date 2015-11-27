@@ -8,11 +8,10 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'solidus_globalize'
   s.version     = SolidusGlobalize.version
-  s.summary     = 'Provides globalization features for Spreecommerce.'
+  s.summary     = 'Provides globalization features for Solidus.'
   s.description = s.summary
 
-  s.author      = 'Sean Schofield'
-  s.email       = 'sean.schofield@gmail.com'
+  s.authors      = ['Thomas von Deyen', 'Alessandro Lepore', 'Diego Franciosi']
   s.homepage    = 'https://solidus.io/'
   s.license     = 'BSD-3'
 
@@ -25,6 +24,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'friendly_id-globalize'
   s.add_runtime_dependency 'globalize', '~> 5.0.1'
+  s.add_runtime_dependency 'solidus_i18n', '~> 1.0'
 
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'capybara', '~> 2.4.4'
