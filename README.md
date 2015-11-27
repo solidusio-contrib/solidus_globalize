@@ -18,7 +18,7 @@ Happy translating!
 Add the following to your `Gemfile`:
 
 ```ruby
-gem 'spree_globalize', github: 'spree-contrib/spree_globalize', branch: 'master'
+gem 'solidus_globalize', github: 'solidusio-contrib/solidus_globalize', branch: 'master'
 ```
 
 Run `bundle install`
