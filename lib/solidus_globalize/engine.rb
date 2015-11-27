@@ -1,14 +1,14 @@
 require 'globalize'
 require 'friendly_id/globalize'
 
-module SpreeGlobalize
+module SolidusGlobalize
   class Engine < Rails::Engine
     engine_name 'spree_globalize'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
     initializer "spree_globalize.environment", before: :load_config_initializers do |app|
-      SpreeGlobalize::Config = SpreeGlobalize::Configuration.new
+      SolidusGlobalize::Config = SolidusGlobalize::Configuration.new
     end
 
     initializer "spree_globalize.permitted_attributes", before: :load_config_initializers do |app|

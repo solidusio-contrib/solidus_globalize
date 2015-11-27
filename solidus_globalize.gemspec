@@ -2,18 +2,18 @@
 lib = File.expand_path('../lib/', __FILE__)
 $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 
-require 'spree_globalize/version'
+require 'solidus_globalize/version'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_globalize'
-  s.version     = SpreeGlobalize.version
+  s.name        = 'solidus_globalize'
+  s.version     = SolidusGlobalize.version
   s.summary     = 'Provides globalization features for Spreecommerce.'
   s.description = s.summary
 
   s.author      = 'Sean Schofield'
   s.email       = 'sean.schofield@gmail.com'
-  s.homepage    = 'http://spreecommerce.com'
+  s.homepage    = 'http://soliduscommerce.com'
   s.license     = 'BSD-3'
 
   s.files        = `git ls-files`.split("\n")
@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'friendly_id-globalize'
   s.add_runtime_dependency 'globalize', '~> 5.0.1'
-  s.add_runtime_dependency 'spree_i18n', '~> 3.1.0.beta'
 
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'capybara', '~> 2.4.4'
