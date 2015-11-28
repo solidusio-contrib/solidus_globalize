@@ -1,4 +1,4 @@
-module SpreeGlobalize
+module SolidusGlobalize
   module LocaleHelper
     def select_supported_locales
       select_tag(
@@ -11,7 +11,7 @@ module SpreeGlobalize
     def select_available_locales_fields
       select_tag(
         'locale',
-        options_for_select(available_locales_options, SpreeI18n::Config.available_locales),
+        options_for_select(available_locales_options, SolidusI18n::Config.available_locales),
         common_options
       )
     end

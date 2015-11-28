@@ -3,15 +3,15 @@ require 'friendly_id/globalize'
 
 module SolidusGlobalize
   class Engine < Rails::Engine
-    engine_name 'spree_globalize'
+    engine_name 'solidus_globalize'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
-    initializer "spree_globalize.environment", before: :load_config_initializers do |app|
+    initializer "solidus_globalize.environment", before: :load_config_initializers do |app|
       SolidusGlobalize::Config = SolidusGlobalize::Configuration.new
     end
 
-    initializer "spree_globalize.permitted_attributes", before: :load_config_initializers do |app|
+    initializer "solidus_globalize.permitted_attributes", before: :load_config_initializers do |app|
       taxon_attributes = { translations_attributes: [:id, :locale, :name, :description, :permalink, :meta_description, :meta_keywords, :meta_title] }
       Spree::PermittedAttributes.taxon_attributes << taxon_attributes
 

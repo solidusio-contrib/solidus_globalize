@@ -3,7 +3,7 @@ module Spree
     let!(:product) { create(:product) }
 
     before do
-      SpreeI18n::Config.available_locales = [:'pt-BR']
+      SolidusI18n::Config.available_locales = [:'pt-BR']
     end
 
     context "visit non translated product page via permalink on url" do

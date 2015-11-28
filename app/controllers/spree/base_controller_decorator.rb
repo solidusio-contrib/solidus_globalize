@@ -1,3 +1,3 @@
 Spree::BaseController.class_eval do
-  include SpreeGlobalize::ControllerGlobalizeHelper
+  include SolidusGlobalize::ControllerGlobalizeHelper
 end
