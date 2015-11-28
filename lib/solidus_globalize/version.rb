@@ -1,4 +1,4 @@
-module SpreeGlobalize
+module SolidusGlobalize
   module_function
 
   # Returns the version of the currently loaded SpreeGlobalize as a

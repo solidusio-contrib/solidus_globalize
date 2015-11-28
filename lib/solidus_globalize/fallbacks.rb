@@ -1,4 +1,4 @@
-module SpreeGlobalize
+module SolidusGlobalize
   module Fallbacks
     # Prevents the app from breaking when a translation is not present on the
     # default locale. It should search for translations in all supported
