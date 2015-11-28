@@ -1,4 +1,4 @@
-module SpreeGlobalize
+module SolidusGlobalize
   module Translatable
     extend ActiveSupport::Concern
 

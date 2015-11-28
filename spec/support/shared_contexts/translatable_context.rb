@@ -26,8 +26,8 @@ shared_context "behaves as translatable" do
     let!(:model) { subject.class.new }
 
     before do
-      SpreeGlobalize::Config.supported_locales = [:en, :es, :de]
-      SpreeGlobalize::Fallbacks.config!
+      SolidusGlobalize::Config.supported_locales = [:en, :es, :de]
+      SolidusGlobalize::Fallbacks.config!
 
       model[attribute] = 'produto'
     end
@@ -42,8 +42,8 @@ shared_context "behaves as translatable" do
     let!(:model) { subject.class.new }
 
     before do
-      SpreeGlobalize::Config.supported_locales = [:es, :en, :de]
-      SpreeGlobalize::Fallbacks.config!
+      SolidusGlobalize::Config.supported_locales = [:es, :en, :de]
+      SolidusGlobalize::Fallbacks.config!
 
       model[attribute] = 'product'
     end

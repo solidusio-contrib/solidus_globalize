@@ -7,8 +7,8 @@ RSpec.feature "Translations", :js do
   background do
     create(:store)
     reset_spree_preferences
-    SpreeI18n::Config.available_locales = [:en, :'pt-BR']
-    SpreeGlobalize::Config.supported_locales = [:en, :'pt-BR']
+    SolidusI18n::Config.available_locales = [:en, :'pt-BR']
+    SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
   end
 
   context "products" do
@@ -223,14 +223,14 @@ RSpec.feature "Translations", :js do
 
     background do
       create(:store)
-      SpreeI18n::Config.available_locales = [:en, :'pt-BR', :de]
+      SolidusI18n::Config.available_locales = [:en, :'pt-BR', :de]
       visit spree.edit_admin_general_settings_path
     end
 
     scenario "adds german to supported locales" do
       targetted_select2_search(language, from: '#s2id_supported_locales_')
       click_on 'Update'
-      expect(SpreeGlobalize::Config.supported_locales).to include(:de)
+      expect(SolidusGlobalize::Config.supported_locales).to include(:de)
     end
   end
 
@@ -239,8 +239,8 @@ RSpec.feature "Translations", :js do
     given(:product) { create(:product) }
 
     scenario "finds the right product with permalink in a not active language" do
-      SpreeI18n::Config.available_locales = [:en, :de]
-      SpreeGlobalize::Config.supported_locales = [:en, :de]
+      SolidusI18n::Config.available_locales = [:en, :de]
+      SolidusGlobalize::Config.supported_locales = [:en, :de]
 
       visit spree.admin_product_path(product)
       click_on "Translations"

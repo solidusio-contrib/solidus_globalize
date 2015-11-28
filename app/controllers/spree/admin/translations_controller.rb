@@ -2,8 +2,8 @@ module Spree
   class Admin::TranslationsController < Admin::BaseController
     before_action :load_parent
 
-    helper 'spree_i18n/locale'
-    helper 'spree_globalize/locale'
+    helper 'solidus_i18n/locale'
+    helper 'solidus_globalize/locale'
 
     helper_method :collection_url
 

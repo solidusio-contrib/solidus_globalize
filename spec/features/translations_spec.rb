@@ -2,8 +2,8 @@
 RSpec.feature "Translations" do
   background do
     reset_spree_preferences
-    SpreeI18n::Config.available_locales = [:en, :'pt-BR']
-    SpreeGlobalize::Config.supported_locales = [:en, :'pt-BR']
+    SolidusI18n::Config.available_locales = [:en, :'pt-BR']
+    SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
   end
 
   context 'product' do
