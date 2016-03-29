@@ -1,21 +1,17 @@
-require 'rubygems'
-require 'rake'
-require 'rake/testtask'
-require 'rake/packagetask'
-require 'rubygems/package_task'
+require 'bundler'
+Bundler::GemHelper.install_tasks
+
 require 'rspec/core/rake_task'
 require 'spree/testing_support/common_rake'
-require 'solidus_globalize'
 
-Bundler::GemHelper.install_tasks
 RSpec::Core::RakeTask.new
 
-task default: :spec
-
-spec = eval(File.read('solidus_globalize.gemspec'))
-
-Gem::PackageTask.new(spec) do |p|
-  p.gem_spec = spec
+task :default do
+  if Dir["spec/dummy"].empty?
+    Rake::Task[:test_app].invoke
+    Dir.chdir("../../")
+  end
+  Rake::Task[:spec].invoke
 end
 
 desc 'Generates a dummy app for testing'
