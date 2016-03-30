@@ -128,9 +128,9 @@ RSpec.feature "Translations", :js do
     it "render edit route properly" do
       visit spree.admin_promotions_path
       within_row(1) { click_icon :globe }
+      expect(page).to have_current_path(%r{/admin/promotions/\d+/translations\z})
       click_on 'Cancel'
-
-      expect(page).to have_css('.content-header')
+      expect(page).to have_current_path(%r{/admin/promotions/\d+/edit\z})
     end
   end
 
@@ -210,9 +210,10 @@ RSpec.feature "Translations", :js do
     it "render edit route properly" do
       visit spree.admin_shipping_methods_path
       within_row(1) { click_icon :globe }
+      expect(page).to have_current_path(%r{/admin/shipping_methods/\d+/translations\z})
       click_on 'Cancel'
 
-      expect(page).to have_css('.content-header')
+      expect(page).to have_current_path(%r{/admin/shipping_methods/\d+/edit\z})
     end
   end
 
