@@ -178,7 +178,7 @@ RSpec.feature "Translations", :js do
   end
 
   context "store" do
-    scenario 'saves translated attributes properly' do
+    pending 'saves translated attributes properly' do
       visit spree.edit_admin_general_settings_path
       click_link Spree.t(:configurations)
       click_link Spree.t(:'globalize.store_translations')
