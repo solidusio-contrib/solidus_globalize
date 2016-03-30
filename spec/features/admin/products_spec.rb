@@ -7,7 +7,7 @@ RSpec.feature "Products", :js do
   context "cloning" do
     scenario "doesnt blow up" do
       visit spree.admin_products_path
-      click_icon :clone
+      click_icon :copy
 
       expect(page).to have_text_like 'has been cloned'
     end
