@@ -14,7 +14,8 @@ Happy translating!
 Add the following to your `Gemfile`:
 
 ```ruby
-gem 'solidus_globalize', github: 'solidusio-contrib/solidus_globalize', branch: 'master'
+gem 'globalize', github: 'globalize/globalize'
+gem 'solidus_globalize', github: 'solidusio-contrib/solidus_globalize'
 ```
 
 Run `bundle install`
