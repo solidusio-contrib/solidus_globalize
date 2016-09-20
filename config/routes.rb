@@ -1,4 +1,4 @@
-Spree::Core::Engine.add_routes do
+Spree::Core::Engine.routes.draw do
   namespace :admin do
     get '/:resource/:resource_id/translations' => 'translations#index', as: :translations
     patch '/option_values/:id' => 'option_values#update', as: :option_type_option_value
