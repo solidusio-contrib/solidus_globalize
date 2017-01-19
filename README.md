@@ -5,6 +5,10 @@
 
 This is the globalization project for [Solidus][1].
 
+This adds the **model data** translation support using the [Globalize][3] gem.
+
+If you just need to change the language of your store, please take a look to [solidus_i18n][8].
+
 Happy translating!
 
 ---
@@ -82,4 +86,4 @@ Copyright (c) 2010-2015 [Spree Commerce Inc.][1] and other [contributors][5]. re
 [5]: https://github.com/solidusio-contrib/solidus_globalize/graphs/contributors
 [6]: https://github.com/solidusio-contrib/solidus_globalize/blob/master/LICENSE.md
 [7]: https://github.com/solidusio-contrib/solidus_globalize/blob/master/CONTRIBUTING.md
-[8]: https://github.com/solidusio-contrib/spree_i18n
+[8]: https://github.com/solidusio-contrib/solidus_i18n
