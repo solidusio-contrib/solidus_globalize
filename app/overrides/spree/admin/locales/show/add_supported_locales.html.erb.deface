@@ -1,6 +1,4 @@
-<!-- insert_top '[data-hook="localization_settings_body"]'
-     sequence :after => "localization_settings"
--->
+<!-- insert_bottom '[data-hook="localization_settings_body"]' -->
 <div class="form-group">
   <label for="supported_locales_">
     <%= Spree.t(:'i18n.supported_locales') %>
