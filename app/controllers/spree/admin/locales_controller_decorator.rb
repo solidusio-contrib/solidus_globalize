@@ -1,4 +1,4 @@
-Spree::Admin::GeneralSettingsController.class_eval do
+Spree::Admin::LocalesController.class_eval do
   before_filter :update_i18n_settings, only: :update
 
   private
