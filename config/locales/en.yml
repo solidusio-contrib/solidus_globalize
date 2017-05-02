@@ -1,9 +1,13 @@
 en:
   spree:
+    admin:
+      tab:
+        locales: Locales
     back_to_resource_list: Back To %{resource}
     editing_resource: Editing %{resource}
-    locales: Locales
     globalize:
       locales_displayed_on_translation_forms: Locales displayed on translation forms
       no_translations_for_criteria: There are no translations for given criteria
       store_translations: Store Translations
+    i18n:
+      locales_displayed_on_frontend_select_box: Locales Displayed On Frontend Select Box
