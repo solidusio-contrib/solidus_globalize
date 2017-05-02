@@ -27,6 +27,7 @@ Run `bundle install`
 You can use the generator to install migrations and append solidus_globalize assets to
 your app solidus manifest file.
 
+    bin/rails g friendly_id_globalize
     bin/rails g solidus_globalize:install
 
 This will install necessary migrations as well as insert these lines into your solidus manifest files:
