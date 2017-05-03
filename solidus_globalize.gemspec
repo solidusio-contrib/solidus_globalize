@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'friendly_id-globalize'
   s.add_runtime_dependency 'globalize', '~> 5.0'
+  s.add_runtime_dependency 'solidus_auth_devise', '~> 1.6'
   s.add_runtime_dependency 'solidus_i18n', '~> 1.0'
 
   s.add_development_dependency 'byebug'
@@ -38,9 +39,12 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry-rails', '>= 0.3.0'
   s.add_development_dependency 'rubocop', '>= 0.24.1'
   s.add_development_dependency 'rspec-rails', '~> 3.1'
+  s.add_development_dependency 'spring'
+  s.add_development_dependency 'spring-commands-rspec'
   s.add_development_dependency 'sqlite3', '~> 1.3.10'
   s.add_development_dependency 'simplecov', '~> 0.9.0'
   s.add_development_dependency 'guard-rspec', '>= 4.2.0'
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'friendly_id', '~> 5.0.4'
+  s.add_development_dependency 'web-console'
 end

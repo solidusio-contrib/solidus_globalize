@@ -6,6 +6,11 @@ Spree::Admin::ProductPropertiesController.class_eval do
   end
 
   private
+
+  def find_properties
+    @properties = Spree::Property.with_translations(I18n.locale).map(&:name)
+  end
+
   def update_product_property_attribute
     params.require(:product_property).permit(permitted_params)
   end

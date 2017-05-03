@@ -27,15 +27,16 @@ Run `bundle install`
 You can use the generator to install migrations and append solidus_globalize assets to
 your app solidus manifest file.
 
+    bin/rails g friendly_id_globalize
     bin/rails g solidus_globalize:install
 
-This will insert these lines into your solidus manifest files:
+This will install necessary migrations as well as insert these lines into your solidus manifest files:
 
 ```
 vendor/assets/javascripts/spree/backend/all.js
 //= require spree/backend/solidus_globalize
 
-vendor/assets/stylesheets/spree/frontend/all.css
+vendor/assets/stylesheets/spree/backend/all.css
 *= require spree/backend/solidus_globalize
 ```
 

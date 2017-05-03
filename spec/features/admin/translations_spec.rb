@@ -224,14 +224,14 @@ RSpec.feature "Translations", :js do
 
     background do
       create(:store)
-      SolidusI18n::Config.available_locales = [:en, :'pt-BR', :de]
-      visit spree.edit_admin_general_settings_path
+      SolidusI18n::Config.available_locales = [:en, :'pt-BR', :fr]
+      visit spree.admin_locale_path
     end
 
-    scenario "adds german to supported locales" do
-      targetted_select2_search(language, from: '#s2id_supported_locales_')
+    scenario "adds german to available locales" do
+      targetted_select2_search(language, from: '#s2id_available_locales_')
       click_on 'Update'
-      expect(SolidusGlobalize::Config.supported_locales).to include(:de)
+      expect(SolidusI18n::Config.available_locales).to include(:de)
     end
   end
 
