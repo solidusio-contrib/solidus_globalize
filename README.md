@@ -35,7 +35,7 @@ This will insert these lines into your solidus manifest files:
 vendor/assets/javascripts/spree/backend/all.js
 //= require spree/backend/solidus_globalize
 
-vendor/assets/stylesheets/spree/frontend/all.css
+vendor/assets/stylesheets/spree/backend/all.css
 *= require spree/backend/solidus_globalize
 ```
 
