@@ -46,4 +46,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-rspec', '>= 4.2.0'
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'friendly_id', '~> 5.0.4'
+  s.add_development_dependency 'web-console'
 end
