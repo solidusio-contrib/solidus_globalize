@@ -217,15 +217,14 @@ RSpec.feature "Translations", :js do
     end
   end
 
-
   context "localization settings" do
     given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'de') }
-    given(:french) { Spree.t(:this_file_language, scope: 'i18n', locale: 'fr') }
 
     background do
       create(:store)
       SolidusI18n::Config.available_locales = [:en, :'pt-BR', :de]
       visit spree.edit_admin_general_settings_path
+      click_on "Locales"
     end
 
     scenario "adds german to supported locales" do
