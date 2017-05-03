@@ -30,7 +30,7 @@ $ ->
     display_locale_fields()
     false
 
-  $('#locale, #supported_locales_').select2({placeholder: Spree.translations['please_choose_language']})
+  $('#locale, #available_locales_').select2({placeholder: Spree.translations['please_choose_language']})
 
   $('#locale').change ->
     display_locale_fields()
