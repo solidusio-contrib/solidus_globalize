@@ -22,6 +22,7 @@ For Solidus 2.0+, add the following to your `Gemfile`:
 
 ```ruby
 gem 'globalize', github: 'globalize/globalize'
+gem 'solidus_i18n', github: 'solidusio-contrib/solidus_i18n'
 gem 'solidus_globalize', github: 'solidusio-contrib/solidus_globalize'
 ```
 
@@ -29,6 +30,7 @@ For Solidus 1.x, add the following instead:
 
 ```ruby
 gem 'globalize', '~> 5.0.0'
+gem 'solidus_i18n', github: 'solidusio-contrib/solidus_i18n'
 gem 'solidus_globalize', github: 'solidusio-contrib/solidus_globalize'
 ```
 
