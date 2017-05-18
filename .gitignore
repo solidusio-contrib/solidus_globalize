@@ -19,3 +19,5 @@ public/spree
 .ruby-version
 .ruby-gemset
 .bundle
+
+solidus_globalize.iml
