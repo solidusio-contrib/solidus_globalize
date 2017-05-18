@@ -1,11 +1,11 @@
 <div id="attr_fields">
   <% SolidusI18n::Config.available_locales.each do |locale| %>
     <%= f.globalize_fields_for locale.to_sym do |g| %>
-      <% @resource.class.translated_attribute_names.each_with_index do |attr, i| %>
+      <% f.object.class.translated_attribute_names.each_with_index do |attr, i| %>
         <div class="panel panel-default <%= attr %> <%= locale %>" style="display:<%= i == 0 ? 'auto' : 'none' %>;">
           <div class="panel-heading">
             <% I18n.with_locale(locale) do %>
-              <%= @resource.class.human_attribute_name(attr) %>
+              <%= f.object.class.human_attribute_name(attr) %>
 
               <div class="pull-right text-muted">
                 <small><i><%= Spree.t(:'i18n.this_file_language') %></i></small>
@@ -20,7 +20,7 @@
           </div>
 
           <div class="panel-body">
-            <% if @resource.class.columns_hash[attr.to_s].type == :text %>
+            <% if g.object.class.columns_hash[attr.to_s].type == :text %>
               <%= g.text_area attr, class: 'form-control', rows: 4 %>
             <% else %>
               <%= g.text_field attr, class: 'form-control' %>
