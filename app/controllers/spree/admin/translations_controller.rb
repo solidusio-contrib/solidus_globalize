@@ -28,6 +28,8 @@ module Spree
     def klass
       @klass ||= "Spree::#{params[:resource].classify}".constantize
     end
+    # alias to model_class in order to fallback on the resource for the authorizations
+    alias_method :model_class, :klass
 
     def resource
       @resource ||= if slugged_models.include? klass.class_name
