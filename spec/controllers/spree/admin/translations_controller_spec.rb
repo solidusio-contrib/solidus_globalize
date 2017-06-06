@@ -6,7 +6,7 @@ module Spree
       stub_authorization!
 
       it 'displays page successfully' do
-        get :index, params: { resource: 'products', resource_id: product.slug }
+        spree_get :index, { resource: 'products', resource_id: product.slug }
         expect(response).to be_success
       end
     end
@@ -18,7 +18,7 @@ module Spree
         end
 
         it 'redirect to authorization failure' do
-          get :index, params: { resource: 'products', resource_id: product.slug }
+          spree_get :index, { resource: 'products', resource_id: product.slug }
           expect(response).to redirect_to spree.unauthorized_path
         end
       end
@@ -29,7 +29,7 @@ module Spree
         end
 
         it 'displays page successfully' do
-          get :index, params: { resource: 'products', resource_id: product.slug }
+          spree_get :index, { resource: 'products', resource_id: product.slug }
           expect(response).to be_success
         end
       end
