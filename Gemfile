@@ -10,5 +10,5 @@ case branch
 when 'v1.2', 'v1.3', 'v1.4'
   gem 'globalize', '~> 5.0.0' # for Rails 4.2
 else
-  gem 'globalize', github: 'globalize/globalize' # for Rails 5
+  gem 'globalize', '~> 5.1.0.beta2' # for Rails 5
 end
