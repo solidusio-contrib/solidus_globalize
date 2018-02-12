@@ -1,12 +1,12 @@
-<!-- insert_bottom '#main-nav-bar > .navbar-right' -->
+<!-- insert_bottom '#main-nav-bar' -->
 <% if SolidusGlobalize::Config.supported_locales.many? %>
-  <li id="locale-select" data-hook>
-    <%= form_tag spree.set_locale_path, no_text: truenavbar-form' do %>
-      <div class="form-group">
-        <label for="switch_to_locale" class="sr-only">
+  <li id='locale-select' data-hook>
+    <%= form_tag spree.set_locale_path, no_text: true, class: 'navbar-form' do %>
+      <div class='form-group'>
+        <label for='switch_to_locale' class='sr-only'>
           <%= Spree.t(:'i18n.language') %>
         </label>
-        <%= select_tag(:switch_to_locale, options_for_select(supported_locales_options, I18n.locale), no_text: trueform-control') %>
+        <%= select_tag(:switch_to_locale, options_for_select(supported_locales_options, I18n.locale), no_text: true, class: 'form-control') %>
         <noscript><%= submit_tag %></noscript>
       </div>
     <% end %>
