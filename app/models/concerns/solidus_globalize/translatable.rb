@@ -3,9 +3,7 @@ module SolidusGlobalize
     extend ActiveSupport::Concern
 
     included do |klass|
-      accepts_nested_attributes_for :translations
-      klass.whitelisted_ransackable_associations ||= []
-      klass.whitelisted_ransackable_associations |= ['translations']
+      set_translation_association
     end
 
     class_methods do
@@ -30,6 +28,15 @@ module SolidusGlobalize
       def spree_base_scopes
         super.includes(:translations).references(:translations)
       end
+
+      def set_translation_association(association=:translations)
+        if self.reflect_on_association(association)
+          self.accepts_nested_attributes_for association
+          self.whitelisted_ransackable_associations ||= []
+          self.whitelisted_ransackable_associations |= [association.to_s]
+        end
+      end
+
     end
   end
 end
