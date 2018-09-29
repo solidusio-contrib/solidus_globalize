@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'friendly_id-globalize'
   s.add_runtime_dependency 'globalize', '~> 5.0'
-  s.add_runtime_dependency 'solidus_i18n', '~> 1.0'
+  s.add_runtime_dependency 'solidus_i18n', '~> 2.0'
   s.add_runtime_dependency 'solidus_support'
 
   s.add_development_dependency 'byebug'
