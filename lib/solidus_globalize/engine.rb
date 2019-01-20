@@ -26,6 +26,8 @@ module SolidusGlobalize
       Dir.glob(File.join(root, "app/**/*_decorator*.rb")) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
+      config_controller_patch = 'solidus_globalize/hook_into_spree_admin_configuration'
+      Rails.configuration.cache_classes ? require(config_controller_patch) : load(config_controller_patch)
     end
 
     config.to_prepare &method(:activate).to_proc

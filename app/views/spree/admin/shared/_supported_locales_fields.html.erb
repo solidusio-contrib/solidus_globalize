@@ -1,0 +1,9 @@
+<div class="form-group">
+  <label for="supported_locales_">
+    <%= t(:'i18n.supported_locales', scope: 'spree') %>
+  </label>
+  <%= select_supported_locales %>
+  <p class="help-block">
+    <%= t(:'globalize.locales_displayed_on_translation_forms', scope: 'spree') %>
+  </p>
+</div>
