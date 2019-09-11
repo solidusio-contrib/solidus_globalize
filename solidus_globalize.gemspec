@@ -20,8 +20,6 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.has_rdoc = false
-
   s.add_runtime_dependency 'friendly_id-globalize'
   s.add_runtime_dependency 'globalize', '~> 5.0'
   s.add_runtime_dependency 'solidus_i18n', '~> 1.0'
@@ -38,8 +36,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'poltergeist', '~> 1.5'
   s.add_development_dependency 'pry-rails', '>= 0.3.0'
   s.add_development_dependency 'rubocop', '>= 0.24.1'
-  s.add_development_dependency 'rspec-rails', '~> 3.1'
-  s.add_development_dependency 'sqlite3', '~> 1.3.10'
+  s.add_development_dependency 'rspec-rails', '~> 4.0.0.beta2'
+  s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'simplecov', '~> 0.9.0'
   s.add_development_dependency 'guard-rspec', '>= 4.2.0'
   s.add_development_dependency 'launchy'
