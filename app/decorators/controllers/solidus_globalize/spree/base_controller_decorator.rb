@@ -2,7 +2,7 @@ module SolidusGlobalize
   module Spree
     module BaseControllerDecorator
       def self.prepended(base)
-        include SolidusGlobalize::ControllerGlobalizeHelper
+        base.include SolidusGlobalize::ControllerGlobalizeHelper
       end
 
       ::Spree::BaseController.prepend self
