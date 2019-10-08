@@ -10,7 +10,7 @@ module SolidusGlobalize
   module VERSION
     MAJOR = 3
     MINOR = 1
-    TINY  = 1
+    TINY  = 2
     PRE   = "beta"
 
     STRING = [MAJOR, MINOR, TINY, PRE].compact.join('.')
