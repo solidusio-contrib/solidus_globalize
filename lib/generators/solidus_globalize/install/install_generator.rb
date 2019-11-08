@@ -7,10 +7,6 @@ module SolidusGlobalize
         append_file "vendor/assets/javascripts/spree/backend/all.js", "//= require spree/backend/solidus_globalize\n"
       end
 
-      def add_stylesheets
-        inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/solidus_globalize\n", before: /\*\//, verbose: true
-      end
-
       def add_migrations
         run 'bundle exec rake solidus_globalize:install:migrations'
       end
