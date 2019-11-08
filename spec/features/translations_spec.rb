@@ -2,7 +2,8 @@
 RSpec.feature "Translations" do
   background do
     reset_spree_preferences
-    SolidusI18n::Config.available_locales = [:en, :'pt-BR']
+    allow_any_instance_of(Spree::Store)
+      .to receive(:available_locales) { [:en, :'pt-BR'] }
     SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
   end
 
@@ -21,7 +22,8 @@ RSpec.feature "Translations" do
 
     before do
       I18n.locale = 'pt-BR'
-      Spree::Frontend::Config[:locale] = 'pt-BR'
+      allow_any_instance_of(Spree::Store)
+        .to receive(:available_locales) { [:'pt-BR'] }
     end
 
     scenario 'displays translated product page' do
@@ -36,7 +38,6 @@ RSpec.feature "Translations" do
 
     after do
       I18n.locale = :en
-      Spree::Frontend::Config[:locale] = :en
     end
   end
 end

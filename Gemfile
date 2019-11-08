@@ -4,7 +4,6 @@ gemspec
 
 branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
 gem 'solidus', github: 'solidusio/solidus', branch: branch
-gem 'solidus_i18n', github: 'solidusio-contrib/solidus_i18n', branch: 'master'
 
 case branch
 when 'v1.2', 'v1.3', 'v1.4'

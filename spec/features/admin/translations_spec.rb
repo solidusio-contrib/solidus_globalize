@@ -2,12 +2,12 @@ RSpec.feature "Translations", :js do
   stub_authorization!
 
   given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
-  given!(:store) { create(:store) }
+  given!(:store) { create(:store, available_locales: available_locales) }
+  let(:available_locales) { [:en, :'pt-BR'] }
 
   background do
-    create(:store)
+    create(:store, available_locales: available_locales)
     reset_spree_preferences
-    SolidusI18n::Config.available_locales = [:en, :'pt-BR']
     SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
   end
 
@@ -221,10 +221,10 @@ RSpec.feature "Translations", :js do
   context "localization settings" do
     given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'de') }
     given(:french) { Spree.t(:this_file_language, scope: 'i18n', locale: 'fr') }
+    let(:available_locales) { [:en, :'pt-BR', :de] }
 
     background do
-      create(:store)
-      SolidusI18n::Config.available_locales = [:en, :'pt-BR', :de]
+      create(:store, available_locales: available_locales)
       visit spree.edit_admin_general_settings_path
       click_on "Locales"
     end
@@ -239,9 +239,9 @@ RSpec.feature "Translations", :js do
   context "permalink routing" do
     given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'de') }
     given(:product) { create(:product) }
+    let(:available_locales) { [:en, :de] }
 
     scenario "finds the right product with permalink in a not active language" do
-      SolidusI18n::Config.available_locales = [:en, :de]
       SolidusGlobalize::Config.supported_locales = [:en, :de]
 
       visit spree.admin_product_path(product)

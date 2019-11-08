@@ -68,7 +68,7 @@ should be displayed as options on the translation forms and which should be
 listed to customers on the frontend. You can set them on an initializer. e.g.
 
 ```ruby
-SolidusI18n::Config.available_locales = [:en, :es, :'pt-BR'] # displayed on frontend select box
+Spree.i18n_available_locales = [:en, :es, :'pt-BR'] # displayed on frontend select box
 SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR'] # displayed on translation forms
 ```
 
