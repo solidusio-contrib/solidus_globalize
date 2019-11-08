@@ -35,8 +35,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pg', '~> 0.21'
   s.add_development_dependency 'poltergeist', '~> 1.18'
   s.add_development_dependency 'pry-rails', '>= 0.3.0'
+  s.add_development_dependency 'puma'
   s.add_development_dependency 'rubocop', '>= 0.24.1'
   s.add_development_dependency 'rspec-rails', '~> 3.9'
+  s.add_development_dependency "selenium-webdriver", "~> 3.142"
   s.add_development_dependency 'sqlite3', '~> 1.3.10'
   s.add_development_dependency 'simplecov', '~> 0.9.0'
   s.add_development_dependency 'guard-rspec', '>= 4.2.0'
