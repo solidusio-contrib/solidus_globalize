@@ -41,14 +41,20 @@ module Spree
 
     def duplicate_extra(old_product)
       duplicate_translations(old_product)
+      self.slug = normalize_friendly_id(name)
     end
 
     private
 
     def duplicate_translations(old_product)
       old_product.translations.each do |translation|
-        translation.slug = nil # slug must be regenerated
-        self.translations << translation.dup
+        new_translation = translation.dup
+        # we need to override the name of the default locale,
+        # otherwise we'll have the name conflicting with the
+        # old product. This name is set in Spree::ProductDuplicator
+        # and contains the 'COPY OF ...' piece.
+        new_translation.name = self.name if translation.locale == I18n.locale
+        self.translations << new_translation
       end
     end
   end
