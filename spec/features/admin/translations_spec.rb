@@ -1,5 +1,6 @@
 RSpec.feature "Translations", :js do
   stub_authorization!
+  include_context 'pt-BR locale'
 
   given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
   given!(:store) { create(:store, available_locales: available_locales) }
@@ -20,11 +21,15 @@ RSpec.feature "Translations", :js do
         click_on "Translations"
 
         within("#attr_fields .name.en") { fill_in_name "Pearl Jam" }
+        select2("pt-BR", from: 'Select Locale')
         within("#attr_fields .name.pt-BR") { fill_in_name "Geleia de perola" }
         click_on "Update"
-        visit spree.admin_product_path(product, locale: 'pt-BR')
 
-        expect(page).to have_text_like 'Geleia de perola'
+        click_on "Translations"
+        select2("pt-BR", from: 'Select Locale')
+        within("#attr_fields .name.pt-BR") do
+          expect(page).to have_field(with: 'Geleia de perola')
+        end
       end
     end
 
@@ -34,12 +39,18 @@ RSpec.feature "Translations", :js do
       scenario "saves translated attributes properly" do
         visit spree.admin_product_product_properties_path(product_property.product)
         within_row(1) { click_icon :globe }
-
+        click_on "Value"
+        select2("pt-BR", from: 'Select Locale')
         within("#attr_fields .value.pt-BR") { fill_in_name "vermelho" }
         click_on "Update"
-        visit spree.admin_product_product_properties_path(product_property.product, locale: 'pt-BR')
 
-        expect(page).to have_selector("input[value=vermelho]")
+        visit spree.admin_product_product_properties_path(product_property.product)
+        within_row(1) { click_icon :globe }
+        click_on "Value"
+        select2("pt-BR", from: 'Select Locale')
+        within("#attr_fields .value.pt-BR") do
+          expect(page).to have_field(with: 'vermelho')
+        end
       end
     end
 
@@ -49,15 +60,20 @@ RSpec.feature "Translations", :js do
       scenario "saves translated attributes properly" do
         visit spree.admin_option_types_path
         within_row(1) { click_icon :globe }
-
         within("#attr_fields .name.en") { fill_in_name "shirt sizes" }
         within("#attr_list") { click_on "Presentation" }
         within("#attr_fields .presentation.en") { fill_in_name "size" }
+        select2("pt-BR", from: 'Select Locale')
         within("#attr_fields .presentation.pt-BR") { fill_in_name "tamanho" }
         click_on "Update"
-        visit spree.admin_option_types_path(locale: 'pt-BR')
 
-        expect(page).to have_text_like 'tamanho'
+        visit spree.admin_option_types_path
+        within_row(1) { click_icon :globe }
+        within("#attr_list") { click_on "Presentation" }
+        select2("pt-BR", from: 'Select Locale')
+        within("#attr_fields .presentation.pt-BR") do
+          expect(page).to have_field(with: 'tamanho')
+        end
       end
 
       # Regression test for issue #354
@@ -83,11 +99,17 @@ RSpec.feature "Translations", :js do
         within("#attr_fields .name.en") { fill_in_name "big" }
         within("#attr_list") { click_on "Presentation" }
         within("#attr_fields .presentation.en") { fill_in_name "big" }
+        select2("pt-BR", from: 'Select Locale')
         within("#attr_fields .presentation.pt-BR") { fill_in_name "grande" }
         click_on "Update"
-        visit spree.admin_option_types_path(locale: 'pt-BR')
 
-        expect(page).to have_text_like 'grande'
+        visit spree.admin_option_types_path
+        within_row(1) { click_icon :globe }
+        within("#attr_list") { click_on "Presentation" }
+        select2("pt-BR", from: 'Select Locale')
+        within("#attr_fields .presentation.pt-BR") do
+          expect(page).to have_field(with: 'grande')
+        end
       end
     end
 
@@ -97,15 +119,23 @@ RSpec.feature "Translations", :js do
       scenario "saves translated attributes properly" do
         visit spree.admin_properties_path
         within_row(1) { click_icon :globe }
-
+        select2("pt-BR", from: 'Select Locale')
         within("#attr_fields .name.pt-BR") { fill_in_name "Modelo" }
+
         within("#attr_list") { click_on "Presentation" }
+        select2("en", from: 'Select Locale')
         within("#attr_fields .presentation.en") { fill_in_name "Model" }
+        select2("pt-BR", from: 'Select Locale')
         within("#attr_fields .presentation.pt-BR") { fill_in_name "Modelo" }
         click_on "Update"
-        visit spree.admin_properties_path(locale: 'pt-BR')
 
-        expect(page).to have_text_like 'Modelo'
+        visit spree.admin_properties_path
+        within_row(1) { click_icon :globe }
+        within("#attr_list") { click_on "Presentation" }
+        select2("pt-BR", from: 'Select Locale')
+        within("#attr_fields .presentation.pt-BR") do
+          expect(page).to have_field(with: 'Modelo')
+        end
       end
     end
   end
@@ -118,11 +148,16 @@ RSpec.feature "Translations", :js do
       within_row(1) { click_icon :globe }
 
       within("#attr_fields .name.en") { fill_in_name "All free" }
+      select2("pt-BR", from: 'Select Locale')
       within("#attr_fields .name.pt-BR") { fill_in_name "Salve salve" }
       click_on "Update"
-      visit spree.admin_promotions_path(locale: 'pt-BR')
 
-      expect(page).to have_text_like 'Salve salve'
+      visit spree.admin_promotions_path
+      within_row(1) { click_icon :globe }
+      select2("pt-BR", from: 'Select Locale')
+      within("#attr_fields .name.pt-BR") do
+        expect(page).to have_field(with: 'Salve salve')
+      end
     end
 
     it "render edit route properly" do
@@ -142,11 +177,16 @@ RSpec.feature "Translations", :js do
       within_row(1) { click_icon :globe }
 
       within("#attr_fields .name.en") { fill_in_name "Guitars" }
+      select2("pt-BR", from: 'Select Locale')
       within("#attr_fields .name.pt-BR") { fill_in_name "Guitarras" }
       click_on "Update"
-      visit spree.admin_taxonomies_path(locale: 'pt-BR')
 
-      expect(page).to have_text_like 'Guitarras'
+      visit spree.admin_taxonomies_path
+      within_row(1) { click_icon :globe }
+      select2("pt-BR", from: 'Select Locale')
+      within("#attr_fields .name.pt-BR") do
+        expect(page).to have_field(with: 'Guitarras')
+      end
     end
   end
 
@@ -158,6 +198,7 @@ RSpec.feature "Translations", :js do
       visit spree.admin_translations_path('taxons', taxon.id)
 
       within("#attr_fields .name.en") { fill_in_name "Acoustic" }
+      select2("pt-BR", from: 'Select Locale')
       within("#attr_fields .name.pt-BR") { fill_in_name "Acusticas" }
       click_on "Update"
 
@@ -171,9 +212,11 @@ RSpec.feature "Translations", :js do
       # ensure taxon is in root or it will not be visible
       expect(taxonomy.root.children.count).to be(1)
 
-      visit spree.admin_translations_path('taxons', taxon.id, locale: 'pt-BR')
-
-      expect(page).to have_selector("input[value=Acusticas]")
+      visit spree.admin_translations_path('taxons', taxon.id)
+      select2("pt-BR", from: 'Select Locale')
+      within("#attr_fields .name.pt-BR") do
+        expect(page).to have_field(with: 'Acusticas')
+      end
     end
   end
 
@@ -200,11 +243,15 @@ RSpec.feature "Translations", :js do
       visit spree.admin_translations_path('shipping_methods', shipping_method.id)
 
       within("#attr_fields .name.en") { fill_in_name "Urgent elivery" }
+      select2("pt-BR", from: 'Select Locale')
       within("#attr_fields .name.pt-BR") { fill_in_name "Entrega urgente" }
       click_on "Update"
 
-      visit spree.admin_shipping_methods_path(locale: 'pt-BR')
-      expect(page).to have_text_like 'Entrega urgente'
+      visit spree.admin_translations_path('shipping_methods', shipping_method.id)
+      select2("pt-BR", from: 'Select Locale')
+      within("#attr_fields .name.pt-BR") do
+        expect(page).to have_field(with: 'Entrega urgente')
+      end
     end
 
     it "render edit route properly" do
@@ -217,45 +264,50 @@ RSpec.feature "Translations", :js do
     end
   end
 
-
   context "localization settings" do
-    given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'de') }
-    given(:french) { Spree.t(:this_file_language, scope: 'i18n', locale: 'fr') }
-    let(:available_locales) { [:en, :'pt-BR', :de] }
+    given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
 
     background do
-      create(:store, available_locales: available_locales)
+      create(:store, available_locales: [:en])
       visit spree.edit_admin_general_settings_path
-      click_on "Locales"
+      within_row(3) { click_icon :edit }
     end
 
-    scenario "adds german to supported locales" do
-      targetted_select2_search(language, from: '#s2id_supported_locales_')
+    scenario "adds portugues to supported locales" do
+      targetted_select2_search(language, from: '#store_available_locales_field input')
       click_on 'Update'
-      expect(SolidusGlobalize::Config.supported_locales).to include(:de)
+      expect(SolidusGlobalize::Config.supported_locales).to include(:'pt-BR')
     end
   end
 
   context "permalink routing" do
-    given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'de') }
+    given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
     given(:product) { create(:product) }
-    let(:available_locales) { [:en, :de] }
+    let(:available_locales) { [:en, :'pt-BR'] }
 
-    scenario "finds the right product with permalink in a not active language" do
-      SolidusGlobalize::Config.supported_locales = [:en, :de]
+    scenario "finds the right product with permalink in another language" do
+      SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
 
       visit spree.admin_product_path(product)
       click_on "Translations"
+
+      click_on "Name"
+      select2("pt-BR", from: 'Select Locale')
+      within("#attr_fields .name.pt-BR") { fill_in_name "Produtos" }
+
       click_on "Slug"
+      select2("en", from: 'Select Locale')
       within("#attr_fields .slug.en") { fill_in_name "en_link" }
-      within("#attr_fields .slug.de") { fill_in_name "de_link" }
+      select2("pt-BR", from: 'Select Locale')
+      within("#attr_fields .slug.pt-BR") { fill_in_name "pt-BR_link" }
+
       click_on "Update"
 
       visit spree.product_path 'en_link'
       expect(page).to have_text_like 'Product'
 
-      visit spree.product_path 'de_link'
-      expect(page).to have_text_like 'Product'
+      visit '/pt-BR/products/pt-BR_link'
+      expect(page).to have_text_like 'Produtos'
     end
   end
 

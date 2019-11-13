@@ -11,13 +11,18 @@ shared_context "behaves as translatable" do
   end
 
   context "when there's a missing translation" do
+    let!(:model) { subject.class.new }
+
     before do
-      subject[attribute] = "English"
-      I18n.locale = :es
+      SolidusGlobalize::Config.supported_locales = [:en, :es]
+      SolidusGlobalize::Fallbacks.config!
+
+      model[attribute] = 'English'
     end
 
     it "falls back to default locale" do
-      expect(subject[attribute]).to eq "English"
+      I18n.locale = :es
+      expect(model[attribute]).to eq "English"
     end
   end
 

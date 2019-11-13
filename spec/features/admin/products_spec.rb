@@ -8,8 +8,7 @@ RSpec.feature "Products", :js do
     scenario "doesnt blow up" do
       visit spree.admin_products_path
       click_icon :copy
-
-      expect(page).to have_text_like 'has been cloned'
+      expect(page).to have_selector '.flash', text: 'Product has been cloned', visible: false
     end
   end
 end
