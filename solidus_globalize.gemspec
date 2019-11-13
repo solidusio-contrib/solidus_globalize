@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'globalize', '~> 5.1'
   s.add_runtime_dependency 'solidus_support'
   s.add_runtime_dependency 'rails', '~> 5.2'
+  s.add_runtime_dependency 'deface', '~> 1.5'
 
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'mysql2'
