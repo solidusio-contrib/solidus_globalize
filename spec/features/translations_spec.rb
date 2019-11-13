@@ -1,9 +1,7 @@
 # encoding: utf-8
 RSpec.feature "Translations" do
+  include_context 'pt-BR locale'
   background do
-    reset_spree_preferences
-    allow_any_instance_of(Spree::Store)
-      .to receive(:available_locales) { [:en, :'pt-BR'] }
     SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
   end
 
@@ -22,8 +20,6 @@ RSpec.feature "Translations" do
 
     before do
       I18n.locale = 'pt-BR'
-      allow_any_instance_of(Spree::Store)
-        .to receive(:available_locales) { [:'pt-BR'] }
     end
 
     scenario 'displays translated product page' do
@@ -34,10 +30,6 @@ RSpec.feature "Translations" do
     scenario 'displays translated products list' do
       visit '/pt-BR/products'
       expect(page).to have_content('Antimatéria')
-    end
-
-    after do
-      I18n.locale = :en
     end
   end
 end
