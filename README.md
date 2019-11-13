@@ -1,7 +1,6 @@
 # Solidus Globalize
 
-[![Build Status](https://travis-ci.org/solidusio-contrib/solidus_globalize.svg?branch=master)](https://travis-ci.org/solidusio-contrib/solidus_globalize)
-[![Code Climate](https://codeclimate.com/github/solidusio-contrib/solidus_globalize/badges/gpa.svg)](https://codeclimate.com/github/solidusio-contrib/solidus_globalize)
+[![CircleCI](https://circleci.com/gh/solidusio-contrib/solidus_globalize/tree/master.svg?style=svg)](https://circleci.com/gh/solidusio-contrib/solidus_globalize/tree/master)[![Code Climate](https://codeclimate.com/github/solidusio-contrib/solidus_globalize/badges/gpa.svg)](https://codeclimate.com/github/solidusio-contrib/solidus_globalize)
 
 This is the globalization project for [Solidus][1].
 
