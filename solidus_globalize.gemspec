@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rails', '~> 5.2'
   s.add_runtime_dependency 'deface', '~> 1.5'
 
+  s.add_development_dependency 'routing-filter', '~> 0.6'
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'mysql2'
   s.add_development_dependency 'pg', '~> 0.21'
