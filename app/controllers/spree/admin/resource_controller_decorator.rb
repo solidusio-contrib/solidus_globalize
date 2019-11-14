@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SolidusGlobalize::ResourceControllerDecorator
   def parent
     if parent_data.present?

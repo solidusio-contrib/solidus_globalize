@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddLocaleToFriendlyIdSlugs < SolidusSupport::Migration[4.2]
   def change
     add_column :friendly_id_slugs, :locale, :string, length: 2, null: :false, after: :scope

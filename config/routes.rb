@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::Core::Engine.routes.draw do
   namespace :admin do
     get '/:resource/:resource_id/translations' => 'translations#index', as: :translations

@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 module Spree
   RSpec.describe Product, type: :model do
@@ -41,7 +41,7 @@ module Spree
                                       meta_description: '顶尖工艺设计',
                                       meta_keywords: '工艺品'
 
-          expect(Product.like_any([:name], ['创意'])).to include(product)
+          expect(described_class.like_any([:name], ['创意'])).to include(product)
         end
 
         it "with name or description" do
@@ -51,7 +51,7 @@ module Spree
                                       meta_description: '顶尖工艺设计',
                                       meta_keywords: '工艺品'
 
-          expect(Product.like_any([:name, :description], ['手工艺品'])).to include(product)
+          expect(described_class.like_any([:name, :description], ['手工艺品'])).to include(product)
         end
       end
     end
@@ -70,7 +70,7 @@ module Spree
       it "changes the slug on the translation to allow reuse of original slug" do
         expect do
           subject
-        end.to change { product.slug }
+        end.to change(product, :slug)
       end
     end
   end

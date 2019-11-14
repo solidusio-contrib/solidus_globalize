@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 shared_context "behaves as translatable" do
   testable_attributes = [:name, :value]
   attribute = nil

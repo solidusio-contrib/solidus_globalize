@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RenameActivatorTranslationsToPromotionTranslations < SolidusSupport::Migration[4.2]
   def change
     if table_exists? 'spree_activator_translations'

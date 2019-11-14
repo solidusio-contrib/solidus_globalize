@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   RSpec.describe ProductsController, type: :controller do
     include_context 'pt-BR locale'

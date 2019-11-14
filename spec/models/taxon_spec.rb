@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   RSpec.describe Taxon, type: :model do
     describe '.ransack' do

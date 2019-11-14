@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::Admin::ShippingMethodsController.class_eval do
   private
 

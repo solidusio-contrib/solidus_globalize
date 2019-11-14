@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::Admin::OptionValuesController.class_eval do
   def update
     option_value = Spree::OptionValue.find(params[:id])
@@ -6,6 +8,7 @@ Spree::Admin::OptionValuesController.class_eval do
   end
 
   private
+
   def update_option_value_attribute
     params.require(:option_value).permit(permitted_params)
   end

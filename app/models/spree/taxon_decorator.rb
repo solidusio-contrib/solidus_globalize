@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   Taxon.class_eval do
     translates :name, :description, :meta_title, :meta_description, :meta_keywords,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::Admin::ProductPropertiesController.class_eval do
   def translate
     product_property = Spree::ProductProperty.find(params[:id])
@@ -6,11 +8,12 @@ Spree::Admin::ProductPropertiesController.class_eval do
   end
 
   private
+
   def update_product_property_attribute
     params.require(:product_property).permit(permitted_params)
   end
 
   def permitted_params
-   [translations_attributes: [:id, :locale, :value]]
+    [translations_attributes: [:id, :locale, :value]]
   end
 end

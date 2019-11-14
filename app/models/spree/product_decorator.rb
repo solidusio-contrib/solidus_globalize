@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   Product.class_eval do
     translates :name, :description, :meta_description, :meta_keywords, :slug,
@@ -53,8 +55,8 @@ module Spree
         # otherwise we'll have the name conflicting with the
         # old product. This name is set in Spree::ProductDuplicator
         # and contains the 'COPY OF ...' piece.
-        new_translation.name = self.name if translation.locale == I18n.locale
-        self.translations << new_translation
+        new_translation.name = name if translation.locale == I18n.locale
+        translations << new_translation
       end
     end
   end

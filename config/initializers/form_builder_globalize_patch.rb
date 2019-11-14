@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActionView
   module Helpers
     class FormBuilder
@@ -41,6 +43,7 @@ module ActionView
       #
       def globalize_fields_for(locale, *args, &proc)
         raise ArgumentError, "Missing block" unless block_given?
+
         @index      = @index ? @index + 1 : 1
         object_name = "#{@object_name}[translations_attributes][#{@index}]"
         object      = @object.translation_for(locale)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   class Admin::TranslationsController < Admin::BaseController
     before_action :load_parent
@@ -28,16 +30,16 @@ module Spree
 
     def resource
       @resource ||= if slugged_models.include? klass.class_name
-        klass.friendly.find(params[:resource_id])
-      else
-        klass.find(params[:resource_id])
+                      klass.friendly.find(params[:resource_id])
+                    else
+                      klass.find(params[:resource_id])
       end
     end
 
     def collection_url
       ActionController::Routing::Routes.recognize_path("admin_#{resource_name}_url", @resource)
       send "admin_#{resource_name}_url", @resource
-    rescue
+    rescue StandardError
       send "edit_admin_#{resource_name}_url", @resource
     end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails'
 require 'coffee_script'
 require 'solidus_support'

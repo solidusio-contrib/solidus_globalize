@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SolidusGlobalize
   module LocaleHelper
     def select_supported_locales

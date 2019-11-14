@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'routing-filter'
 
 # In this support file we simulate how we want routes to be in a real

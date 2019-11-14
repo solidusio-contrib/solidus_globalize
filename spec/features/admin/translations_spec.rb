@@ -1,22 +1,24 @@
-RSpec.feature "Translations", :js do
+# frozen_string_literal: true
+
+RSpec.describe "Translations", :js do
   stub_authorization!
   include_context 'pt-BR locale'
 
-  given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
-  given!(:store) { create(:store, available_locales: available_locales) }
+  let(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
+  let!(:store) { create(:store, available_locales: available_locales) }
   let(:available_locales) { [:en, :'pt-BR'] }
 
-  background do
+  before do
     create(:store, available_locales: available_locales)
     reset_spree_preferences
     SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
   end
 
   context "products" do
-    given(:product) { create(:product) }
+    let(:product) { create(:product) }
 
     context "fills in translations fields" do
-      scenario "saves translated attributes properly" do
+      it "saves translated attributes properly" do
         visit spree.admin_product_path(product)
         click_on "Translations"
 
@@ -34,9 +36,9 @@ RSpec.feature "Translations", :js do
     end
 
     context "product properties" do
-      given!(:product_property) { create(:product_property, value: "red") }
+      let!(:product_property) { create(:product_property, value: "red") }
 
-      scenario "saves translated attributes properly" do
+      it "saves translated attributes properly" do
         visit spree.admin_product_product_properties_path(product_property.product)
         within_row(1) { click_icon :globe }
         click_on "Value"
@@ -55,9 +57,9 @@ RSpec.feature "Translations", :js do
     end
 
     context "option types" do
-      given!(:option_type) { create(:option_value).option_type }
+      let!(:option_type) { create(:option_value).option_type }
 
-      scenario "saves translated attributes properly" do
+      it "saves translated attributes properly" do
         visit spree.admin_option_types_path
         within_row(1) { click_icon :globe }
         within("#attr_fields .name.en") { fill_in_name "shirt sizes" }
@@ -77,7 +79,7 @@ RSpec.feature "Translations", :js do
       end
 
       # Regression test for issue #354
-      scenario "successfully creates an option type and go to its edit page" do
+      it "successfully creates an option type and go to its edit page" do
         visit spree.admin_option_types_path
         click_link "New Option Type"
         fill_in "Name", with: "Shirt Size"
@@ -90,9 +92,9 @@ RSpec.feature "Translations", :js do
     end
 
     context "option values" do
-      given!(:option_type) { create(:option_value).option_type }
+      let!(:option_type) { create(:option_value).option_type }
 
-      scenario "saves translated attributes properly" do
+      it "saves translated attributes properly" do
         visit spree.admin_option_types_path
         within_row(1) { click_icon :globe }
 
@@ -114,9 +116,9 @@ RSpec.feature "Translations", :js do
     end
 
     context "properties" do
-      given!(:property) { create(:property) }
+      let!(:property) { create(:property) }
 
-      scenario "saves translated attributes properly" do
+      it "saves translated attributes properly" do
         visit spree.admin_properties_path
         within_row(1) { click_icon :globe }
         select2("pt-BR", from: 'Select Locale')
@@ -141,9 +143,9 @@ RSpec.feature "Translations", :js do
   end
 
   context "promotions" do
-    given!(:promotion) { create(:promotion) }
+    let!(:promotion) { create(:promotion) }
 
-    scenario "saves translated attributes properly" do
+    it "saves translated attributes properly" do
       visit spree.admin_promotions_path
       within_row(1) { click_icon :globe }
 
@@ -170,9 +172,9 @@ RSpec.feature "Translations", :js do
   end
 
   context "taxonomies" do
-    given!(:taxonomy) { create(:taxonomy) }
+    let!(:taxonomy) { create(:taxonomy) }
 
-    scenario "saves translated attributes properly" do
+    it "saves translated attributes properly" do
       visit spree.admin_taxonomies_path
       within_row(1) { click_icon :globe }
 
@@ -191,10 +193,10 @@ RSpec.feature "Translations", :js do
   end
 
   context 'taxons' do
-    given!(:taxonomy) { create(:taxonomy) }
-    given!(:taxon) { create(:taxon, taxonomy: taxonomy, parent_id: taxonomy.root.id) }
+    let!(:taxonomy) { create(:taxonomy) }
+    let!(:taxon) { create(:taxon, taxonomy: taxonomy, parent_id: taxonomy.root.id) }
 
-    scenario "saves translated attributes properly" do
+    it "saves translated attributes properly" do
       visit spree.admin_translations_path('taxons', taxon.id)
 
       within("#attr_fields .name.en") { fill_in_name "Acoustic" }
@@ -236,10 +238,10 @@ RSpec.feature "Translations", :js do
   end
 
   context "shipping methods" do
-    given(:shipping_category) { create(:shipping_category) }
-    given!(:shipping_method) { create(:shipping_method, shipping_categories:[shipping_category]) }
+    let(:shipping_category) { create(:shipping_category) }
+    let!(:shipping_method) { create(:shipping_method, shipping_categories: [shipping_category]) }
 
-    scenario 'saves translated attributes properly' do
+    it 'saves translated attributes properly' do
       visit spree.admin_translations_path('shipping_methods', shipping_method.id)
 
       within("#attr_fields .name.en") { fill_in_name "Urgent elivery" }
@@ -265,15 +267,15 @@ RSpec.feature "Translations", :js do
   end
 
   context "localization settings" do
-    given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
+    let(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
 
-    background do
+    before do
       create(:store, available_locales: [:en])
       visit spree.edit_admin_general_settings_path
       within_row(3) { click_icon :edit }
     end
 
-    scenario "adds portugues to supported locales" do
+    it "adds portugues to supported locales" do
       targetted_select2_search(language, from: '#store_available_locales_field input')
       click_on 'Update'
       expect(SolidusGlobalize::Config.supported_locales).to include(:'pt-BR')
@@ -281,11 +283,11 @@ RSpec.feature "Translations", :js do
   end
 
   context "permalink routing" do
-    given(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
-    given(:product) { create(:product) }
+    let(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
+    let(:product) { create(:product) }
     let(:available_locales) { [:en, :'pt-BR'] }
 
-    scenario "finds the right product with permalink in another language" do
+    it "finds the right product with permalink in another language" do
       SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
 
       visit spree.admin_product_path(product)
