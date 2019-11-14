@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 shared_context "behaves as translatable" do
   testable_attributes = [:name, :value]
   attribute = nil
@@ -28,11 +26,11 @@ shared_context "behaves as translatable" do
     end
   end
 
-  context "missing translation on default locale" do
-    let!(:change_locale) { I18n.locale = :es }
+  context "when translation is missing on default locale" do
     let!(:model) { subject.class.new }
 
     before do
+      I18n.locale = :es
       SolidusGlobalize::Config.supported_locales = [:en, :es, :de]
       SolidusGlobalize::Fallbacks.config!
 
@@ -45,7 +43,7 @@ shared_context "behaves as translatable" do
     end
   end
 
-  context "missing translation on locale other than default" do
+  context "when translation is missing on locale other than default" do
     let!(:model) { subject.class.new }
 
     before do

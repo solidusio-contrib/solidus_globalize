@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe "Translations" do
-  include_context 'pt-BR locale'
+  include_context 'with pt-BR locale file in place'
   before do
     SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
   end

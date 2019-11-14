@@ -2,7 +2,7 @@
 
 RSpec.describe "Translations", :js do
   stub_authorization!
-  include_context 'pt-BR locale'
+  include_context 'with pt-BR locale file in place'
 
   let(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
   let!(:store) { create(:store, available_locales: available_locales) }

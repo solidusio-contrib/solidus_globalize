@@ -56,20 +56,20 @@ module Spree
       end
     end
 
-    context "soft-deletion" do
-      subject do
+    context "when soft-deleting" do
+      subject(:soft_deleting) do
         product.destroy
         product.reload
       end
 
       it "keeps the translation on deletion" do
-        subject
+        soft_deleting
         expect(product.translations).not_to be_empty
       end
 
       it "changes the slug on the translation to allow reuse of original slug" do
         expect do
-          subject
+          soft_deleting
         end.to change(product, :slug)
       end
     end

@@ -2,7 +2,7 @@
 
 module Spree
   RSpec.describe ProductsController, type: :controller do
-    include_context 'pt-BR locale'
+    include_context 'with pt-BR locale file in place'
 
     before do
       SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
