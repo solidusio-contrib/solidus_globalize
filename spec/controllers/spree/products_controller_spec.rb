@@ -13,7 +13,7 @@ module Spree
 
       it "displays pages successfully" do
         get :show, params: { id: product.slug, locale: 'pt-BR' }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end
