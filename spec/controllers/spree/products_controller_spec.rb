@@ -1,15 +1,19 @@
+# frozen_string_literal: true
+
 module Spree
   RSpec.describe ProductsController, type: :controller do
-    let!(:product) { create(:product) }
+    include_context 'with pt-BR locale file in place'
 
     before do
-      SolidusI18n::Config.available_locales = [:'pt-BR']
+      SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
     end
 
     context "visit non translated product page via permalink on url" do
+      let!(:product) { create(:product) }
+
       it "displays pages successfully" do
         get :show, params: { id: product.slug, locale: 'pt-BR' }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end

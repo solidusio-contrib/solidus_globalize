@@ -1,18 +1,18 @@
+# frozen_string_literal: true
+
 module SolidusGlobalize
   module LocaleHelper
     def select_supported_locales
       select_tag(
         'supported_locales[]',
-        options_for_select(available_locales_options, Config.supported_locales),
-        common_options
+        options_for_select(Config.supported_locales)
       )
     end
 
     def select_available_locales_fields
       select_tag(
         'locale',
-        options_for_select(available_locales_options, SolidusI18n::Config.available_locales),
-        common_options
+        options_for_select(Config.supported_locales)
       )
     end
 

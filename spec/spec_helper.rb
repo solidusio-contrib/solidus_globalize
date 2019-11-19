@@ -1,31 +1,11 @@
-require 'simplecov'
-SimpleCov.start 'rails'
+# frozen_string_literal: true
 
 ENV['RAILS_ENV'] ||= 'test'
 
-begin
-  require File.expand_path('../dummy/config/environment', __FILE__)
-rescue LoadError
-  puts 'Could not load dummy application. Please ensure you have run `bundle exec rake test_app`'
-  exit
-end
+require 'solidus_extension_dev_tools/rspec/coverage'
 
-require 'pry'
-require 'ffaker'
-require 'rspec/rails'
+require File.expand_path('dummy/config/environment.rb', __dir__)
 
-RSpec.configure do |config|
-  config.fail_fast = false
-  config.filter_run focus: true
-  config.infer_spec_type_from_file_location!
-  config.mock_with :rspec
-  config.raise_errors_for_deprecations!
-  config.run_all_when_everything_filtered = true
-  config.use_transactional_fixtures = false
+require 'solidus_extension_dev_tools/rspec/feature_helper'
 
-  config.expect_with :rspec do |expectations|
-    expectations.syntax = :expect
-  end
-end
-
-Dir[File.join(File.dirname(__FILE__), '/support/**/*.rb')].each { |file| require file }
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }

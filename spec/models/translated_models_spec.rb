@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   RSpec.describe Product, type: :model do
     include_context "behaves as translatable"

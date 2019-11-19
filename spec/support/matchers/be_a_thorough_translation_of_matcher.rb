@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec::Matchers.define :be_a_thorough_translation_of do |default_locale_filepath|
   match do |filepath|
     locale_file = I18nSpec::LocaleFile.new(filepath)

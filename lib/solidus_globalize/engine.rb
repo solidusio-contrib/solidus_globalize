@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'globalize'
 require 'friendly_id/globalize'
 
@@ -7,18 +9,46 @@ module SolidusGlobalize
 
     config.autoload_paths += %W(#{config.root}/lib)
 
-    initializer "solidus_globalize.environment", before: :load_config_initializers do |app|
+    initializer "solidus_globalize.environment", before: :load_config_initializers do |_app|
       SolidusGlobalize::Config = SolidusGlobalize::Configuration.new
     end
 
-    initializer "solidus_globalize.permitted_attributes", before: :load_config_initializers do |app|
-      taxon_attributes = { translations_attributes: [:id, :locale, :name, :description, :permalink, :meta_description, :meta_keywords, :meta_title] }
+    initializer "solidus_globalize.permitted_attributes",
+      before: :load_config_initializers do |_app|
+      taxon_attributes = {
+        translations_attributes: [
+          :id,
+          :locale,
+          :name,
+          :description,
+          :permalink,
+          :meta_description,
+          :meta_keywords,
+          :meta_title,
+        ]
+      }
       Spree::PermittedAttributes.taxon_attributes << taxon_attributes
 
-      option_value_attributes = { translations_attributes: [:id, :locale, :name, :presentation] }
+      option_value_attributes = {
+        translations_attributes: [
+          :id,
+          :locale,
+          :name,
+          :presentation,
+        ]
+      }
       Spree::PermittedAttributes.option_value_attributes << option_value_attributes
 
-      store_attributes = { translations_attributes: [:id, :locale, :name, :meta_description, :meta_keywords, :seo_title] }
+      store_attributes = {
+        translations_attributes: [
+          :id,
+          :locale,
+          :name,
+          :meta_description,
+          :meta_keywords,
+          :seo_title,
+        ]
+      }
       Spree::PermittedAttributes.store_attributes << store_attributes
     end
 
@@ -28,6 +58,6 @@ module SolidusGlobalize
       end
     end
 
-    config.to_prepare &method(:activate).to_proc
+    config.to_prepare(&method(:activate).to_proc)
   end
 end

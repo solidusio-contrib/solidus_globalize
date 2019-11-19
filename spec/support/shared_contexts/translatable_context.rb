@@ -11,21 +11,26 @@ shared_context "behaves as translatable" do
   end
 
   context "when there's a missing translation" do
-    before do
-      subject[attribute] = "English"
-      I18n.locale = :es
-    end
-
-    it "falls back to default locale" do
-      expect(subject[attribute]).to eq "English"
-    end
-  end
-
-  context "missing translation on default locale" do
-    let!(:change_locale) { I18n.locale = :es }
     let!(:model) { subject.class.new }
 
     before do
+      SolidusGlobalize::Config.supported_locales = [:en, :es]
+      SolidusGlobalize::Fallbacks.config!
+
+      model[attribute] = 'English'
+    end
+
+    it "falls back to default locale" do
+      I18n.locale = :es
+      expect(model[attribute]).to eq "English"
+    end
+  end
+
+  context "when translation is missing on default locale" do
+    let!(:model) { subject.class.new }
+
+    before do
+      I18n.locale = :es
       SolidusGlobalize::Config.supported_locales = [:en, :es, :de]
       SolidusGlobalize::Fallbacks.config!
 
@@ -38,7 +43,7 @@ shared_context "behaves as translatable" do
     end
   end
 
-  context "missing translation on locale other than default" do
+  context "when translation is missing on locale other than default" do
     let!(:model) { subject.class.new }
 
     before do

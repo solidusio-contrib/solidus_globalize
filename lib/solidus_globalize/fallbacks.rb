@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SolidusGlobalize
   module Fallbacks
     # Prevents the app from breaking when a translation is not present on the
@@ -25,9 +27,9 @@ module SolidusGlobalize
 
       Globalize.fallbacks = supported.inject({}) do |fallbacks, locale|
         if locale.to_sym == default
-          fallbacks.merge(locale => [locale].push(supported-[locale]).flatten)
+          fallbacks.merge(locale => [locale].push(supported - [locale]).flatten)
         else
-          fallbacks.merge(locale => [locale, default].push(supported-[locale, default]).flatten)
+          fallbacks.merge(locale => [locale, default].push(supported - [locale, default]).flatten)
         end
       end
     end

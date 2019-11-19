@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 module Spree
@@ -11,7 +13,7 @@ module Spree
     end
 
     let!(:variant) do
-      Variant.create!(
+      described_class.create!(
         price: 19.99,
         product: product
       )

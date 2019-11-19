@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SolidusGlobalize
   # The fact this logic is in a single module also helps to apply a custom
   # locale on the spree/api context since api base controller inherits from

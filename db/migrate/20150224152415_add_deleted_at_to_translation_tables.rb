@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDeletedAtToTranslationTables < SolidusSupport::Migration[4.2]
   def change
     unless column_exists?(:spree_product_translations, :deleted_at)

@@ -1,6 +1,6 @@
 # Contributing
 
-Spree globalize is an open source project and we encourage contributions. Please see the [contributors guidelines](http://spreecommerce.com/documentation/contributing_to_spree.html) for more information before contributing.
+Solidus globalize is an open source project and we encourage contributions.
 
 In the spirit of [free software][1], **everyone** is encouraged to help improve this project.
 
@@ -9,7 +9,7 @@ Here are some ways *you* can contribute:
 * by using prerelease versions
 * by reporting [bugs][2]
 * by suggesting new features
-* by writing [translations][3] (e.g. use branch 2-4-stable for Spree v2.4.x)
+* by writing [translations][3]
 * by writing or editing documentation
 * by writing specifications
 * by writing code (*no patch is too small*: fix typos, add comments, clean up inconsistent whitespace)
@@ -30,7 +30,7 @@ In the issue itself please provide:
 
 * A comprehensive list of steps to reproduce the issue.
 * What you're *expecting* to happen compared with what's *actually* happening.
-* The version of Spree *and* the version of Rails.
+* The version of Solidus *and* the version of Rails.
 * A list of all extensions.
 * Any relevant stack traces ("Full trace" preferred)
 * Your `Gemfile`
@@ -77,5 +77,5 @@ Some things that will increase the chance that your pull request is accepted, ta
 And in case we didn't emphasize it enough: **we love tests!**
 
 [1]: http://www.fsf.org/licensing/essays/free-sw.html
-[2]: https://github.com/spree-contrib/spree_globalize/issues
-[3]: https://github.com/spree-contrib/spree_globalize/tree/master/config/locales
+[2]: https://github.com/solidusio-contrib/solidus_globalize/issues
+[3]: https://github.com/solidusio/solidus_i18n/tree/master/config/locales

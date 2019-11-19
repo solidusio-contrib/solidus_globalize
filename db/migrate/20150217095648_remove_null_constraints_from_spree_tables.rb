@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveNullConstraintsFromSpreeTables < SolidusSupport::Migration[4.2]
   def up
     change_column :spree_properties, :presentation, :string, null: true

@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 module Spree
   RSpec.describe ProductProperty, type: :model do
@@ -11,7 +11,7 @@ module Spree
       end
 
       it 'still validates the "value" field without raising an exception' do
-        expect { subject.valid? }.to_not raise_error(NoMethodError)
+        expect { subject.valid? }.not_to raise_error(NoMethodError)
       end
     end
   end

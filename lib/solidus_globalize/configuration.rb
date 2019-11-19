@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SolidusGlobalize
   class Configuration < Spree::Preferences::Configuration
     # These configs intend to, respectively:
