@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'mysql2'
-  s.add_development_dependency 'pg', '~> 0.21'
+  s.add_development_dependency 'pg', '~> 1.1'
   s.add_development_dependency 'pry-rails', '>= 0.3.0'
   s.add_development_dependency 'routing-filter', '~> 0.6'
   s.add_development_dependency 'sqlite3', '~> 1.3.10'
