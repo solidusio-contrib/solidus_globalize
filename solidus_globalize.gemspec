@@ -32,5 +32,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry-rails', '>= 0.3.0'
   s.add_development_dependency 'routing-filter', '~> 0.6'
   s.add_development_dependency 'solidus_dev_support'
-  s.add_development_dependency 'sqlite3', '~> 1.3.10'
+  s.add_development_dependency 'sqlite3', '~> 1.4.2'
 end
