@@ -5,6 +5,7 @@ require 'friendly_id/globalize'
 
 module SolidusGlobalize
   class Engine < Rails::Engine
+    isolate_namespace Spree
     engine_name 'solidus_globalize'
     include SolidusSupport::EngineExtensions::Decorators
 
@@ -49,6 +50,11 @@ module SolidusGlobalize
         ]
       }
       Spree::PermittedAttributes.store_attributes << store_attributes
+
+      # use rspec for tests
+      config.generators do |g|
+        g.test_framework :rspec
+      end
     end
   end
 end
