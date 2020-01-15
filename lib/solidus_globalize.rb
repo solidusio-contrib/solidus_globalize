@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails'
-require 'coffee_script'
+require 'solidus_core'
 require 'solidus_support'
 require 'deface'
 
