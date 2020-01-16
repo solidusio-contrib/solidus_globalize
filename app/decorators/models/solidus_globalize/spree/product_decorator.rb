@@ -9,6 +9,7 @@ module SolidusGlobalize
             :description,
             :meta_description,
             :meta_keywords,
+            :meta_title,
             :slug,
             fallbacks_for_empty_translations: true
 
