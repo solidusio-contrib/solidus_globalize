@@ -1,4 +1,4 @@
 <!-- insert_bottom 'td.actions' -->
 <% if f.object.persisted? %>
-  <%= link_to_with_icon 'globe', nil, spree.admin_translations_path('product_property', f.object.id), title: Spree.t(:'i18n.translations'), no_text: true %>
+  <%= link_to_with_icon 'globe', nil, spree.admin_translations_path('product_property', f.object.id), title: I18n.t(:'spree.i18n.translations'), no_text: true %>
 <% end %>

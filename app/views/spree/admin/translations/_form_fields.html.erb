@@ -8,7 +8,7 @@
               <%= @resource.class.human_attribute_name(attr) %>
 
               <div class="pull-right text-muted">
-                <small><i><%= Spree.t(:'i18n.this_file_language') %></i></small>
+                <small><i><%= I18n.t(:'spree.i18n.this_file_language') %></i></small>
               </div>
             <% end %>
           </div>
@@ -26,7 +26,7 @@
   <% end %>
 
   <p class="no-translations" style="display: none">
-    <%= Spree.t(:'globalize.no_translations_for_criteria') %>
+    <%= I18n.t(:'spree.globalize.no_translations_for_criteria') %>
   </p>
 </div>
 

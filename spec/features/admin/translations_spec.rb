@@ -4,7 +4,7 @@ RSpec.describe "Translations", :js do
   stub_authorization!
   include_context 'with pt-BR locale file in place'
 
-  let(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
+  let(:language) { I18n.t(:this_file_language, scope: 'spree.i18n', locale: 'pt-BR') }
   let!(:store) { create(:store, available_locales: available_locales) }
   let(:available_locales) { [:en, :'pt-BR'] }
 
@@ -225,8 +225,8 @@ RSpec.describe "Translations", :js do
   context "store" do
     pending 'saves translated attributes properly' do
       visit spree.edit_admin_general_settings_path
-      click_link Spree.t(:configurations)
-      click_link Spree.t(:'globalize.store_translations')
+      click_link I18n.t(:configurations)
+      click_link I18n.t(:'spree.globalize.store_translations')
 
       within("#attr_fields .name.pt-BR") { fill_in_name "nome store" }
       click_on "Update"
@@ -267,7 +267,7 @@ RSpec.describe "Translations", :js do
   end
 
   context "localization settings" do
-    let(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
+    let(:language) { I18n.t(:this_file_language, scope: 'spree.i18n', locale: 'pt-BR') }
 
     before do
       create(:store, available_locales: [:en])
@@ -283,7 +283,7 @@ RSpec.describe "Translations", :js do
   end
 
   context "permalink routing" do
-    let(:language) { Spree.t(:this_file_language, scope: 'i18n', locale: 'pt-BR') }
+    let(:language) { I18n.t(:this_file_language, scope: 'spree.i18n', locale: 'pt-BR') }
     let(:product) { create(:product) }
     let(:available_locales) { [:en, :'pt-BR'] }
 
