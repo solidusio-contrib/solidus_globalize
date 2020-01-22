@@ -58,8 +58,18 @@ module Spree
 
     context "when soft-deleting" do
       subject(:soft_deleting) do
-        product.destroy
+        product.discard
         product.reload
+      end
+
+      it 'keeps the core discard callbacks' do
+        expect(product.variants_including_master.kept.size).to eq 1
+        expect(product.variants_including_master.with_deleted.size).to eq 1
+
+        soft_deleting
+
+        expect(product.variants_including_master.kept.size).to eq 0
+        expect(product.variants_including_master.with_deleted.size).to eq 1
       end
 
       it "keeps the translation on deletion" do

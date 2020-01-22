@@ -17,9 +17,16 @@ module SolidusGlobalize
 
           include SolidusGlobalize::Translatable
 
+          after_discard do
+            translations.discard_all
+          end
+
           translation_class.class_eval do
-            # Paranoia soft-deletes the associated records only if they are paranoid themselves.
             acts_as_paranoid
+            include ::Spree::ParanoiaDeprecations
+
+            include Discard::Model
+            self.discard_column = :deleted_at
 
             # Paranoid sets the default scope and Globalize rewrites all query methods.
             # Therefore we prefer to unset the default_scopes over injecting 'unscope'
@@ -27,7 +34,9 @@ module SolidusGlobalize
             self.default_scopes = []
 
             # Punch slug on every translation to allow reuse of original
-            after_destroy :punch_slug
+            after_discard do
+              punch_slug
+            end
 
             def punch_slug
               update(slug: "#{Time.now.to_i}_#{slug}")
