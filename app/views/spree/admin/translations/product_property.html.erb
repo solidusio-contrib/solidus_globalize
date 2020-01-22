@@ -15,10 +15,10 @@
   <div class="col-md-8">
     <%= form_for [:admin, @resource.product, @resource], method: :patch do |f| %>
       <%= render 'form_fields', f: f %>
-      <div class="form-actions" data-hook="buttons">
-        <%= button I18n.t(:'spree.update'), 'update' %>
-        <span class="or"><%= I18n.t(:'spree.or') %></span>
-        <%= link_to I18n.t(:'spree.cancel'), spree.admin_product_product_properties_path(@product_property.product) %>
+
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button_tag t('spree.actions.update'), class: 'btn btn-primary' %>
+        <%= link_to t('spree.actions.cancel'), spree.admin_product_product_properties_path(@product_property.product), class: 'button' %>
       </div>
     <% end %>
   </div>

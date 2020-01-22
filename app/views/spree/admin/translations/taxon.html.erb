@@ -15,10 +15,10 @@
   <div class="col-md-8">
     <%= form_for [:admin, @resource.taxonomy, @resource], url: spree.admin_taxonomy_taxon_path(@taxon.taxonomy, @taxon.id) do |f| %>
       <%= render 'form_fields', f: f %>
-      <div class="form-actions" data-hook="buttons">
-        <%= button I18n.t(:'spree.update'), 'update' %>
-        <span class="or"><%= I18n.t(:'spree.or') %></span>
-        <%= link_to I18n.t(:'spree.cancel'), spree.edit_admin_taxonomy_url(@taxon.taxonomy) %>
+
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button_tag t('spree.actions.update'), class: 'btn btn-primary' %>
+        <%= link_to t('spree.actions.cancel'), spree.edit_admin_taxonomy_url(@taxon.taxonomy), class: 'button' %>
       </div>
     <% end %>
   </div>
