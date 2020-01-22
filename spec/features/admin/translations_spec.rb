@@ -10,8 +10,11 @@ RSpec.describe "Translations", :js do
 
   before do
     create(:store, available_locales: available_locales)
-    reset_spree_preferences
     SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
+  end
+
+  after do
+    SolidusGlobalize::Config.supported_locales = [:en]
   end
 
   context "products" do
