@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('lib', __dir__)
-$LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
-
+$:.push File.expand_path('lib', __dir__)
 require 'solidus_globalize/version'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'solidus_globalize'
-  s.version     = SolidusGlobalize.version
+  s.version     = SolidusGlobalize::VERSION
   s.summary     = 'Provides globalization features for Solidus.'
   s.description = s.summary
 
@@ -16,15 +14,27 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://solidus.io/'
   s.license     = 'BSD-3'
 
-  s.files        = `git ls-files`.split("\n")
-  s.test_files   = `git ls-files -- spec/*`.split("\n")
-  s.require_path = 'lib'
+  if s.respond_to?(:metadata)
+    s.metadata["homepage_uri"] = s.homepage if s.homepage
+    s.metadata["source_code_uri"] = s.homepage if s.homepage
+  end
+
+  s.required_ruby_version = '~> 2.4'
+
+  s.files = Dir.chdir(File.expand_path(__dir__)) do
+    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  end
+  s.test_files = Dir['spec/**/*']
+  s.bindir = "exe"
+  s.executables = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  s.require_paths = ["lib"]
   s.requirements << 'none'
 
-  s.add_runtime_dependency 'deface', '~> 1.5'
-  s.add_runtime_dependency 'friendly_id-globalize'
-  s.add_runtime_dependency 'globalize', '~> 5.1'
-  s.add_runtime_dependency 'solidus_support'
+  s.add_dependency 'deface', '~> 1.5'
+  s.add_dependency 'friendly_id-globalize'
+  s.add_dependency 'globalize', '~> 5.1'
+  s.add_dependency 'solidus_core', ['>= 2.0.0', '< 3']
+  s.add_dependency 'solidus_support', '~> 0.4.0'
 
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'pry-rails', '>= 0.3.0'
