@@ -11,7 +11,7 @@ module Spree
       end
 
       it 'still validates the "value" field without raising an exception' do
-        expect { subject.valid? }.not_to raise_error(NoMethodError)
+        expect { subject.valid? }.not_to raise_error
       end
     end
   end
