@@ -1,9 +1,9 @@
 <% content_for :page_title do %>
-  <%= I18n.t(:'spree.editing_resource', resource: Spree::OptionValue.model_name.human) %> <span class="green">"<%= @option_value.name %>"</span>
+  <%= t(:'spree.editing_resource', resource: Spree::OptionValue.model_name.human) %> <span class="green">"<%= @option_value.name %>"</span>
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= link_to I18n.t(:'spree.back_to_resource_list', resource: Spree::OptionValue.model_name.human), spree.edit_admin_option_type_path(@option_value.option_type), class: 'btn btn-primary' %>
+  <%= link_to t(:'spree.back_to_resource_list', resource: Spree::OptionValue.model_name.human), spree.edit_admin_option_type_path(@option_value.option_type), class: 'btn btn-primary' %>
 <% end %>
 
 <%= render 'settings' %>

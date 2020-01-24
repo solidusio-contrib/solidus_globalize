@@ -1,9 +1,9 @@
 <% content_for :page_title do %>
-  <%= I18n.t(:'spree.editing_resource', resource: Spree::ShippingMethod.model_name.human) %>
+  <%= t(:'spree.editing_resource', resource: Spree::ShippingMethod.model_name.human) %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= link_to I18n.t(:'spree.back_to_resource_list', resource: Spree::ShippingMethod.model_name.human), spree.admin_shipping_methods_path, class: 'btn btn-primary' %>
+  <%= link_to t(:'spree.back_to_resource_list', resource: Spree::ShippingMethod.model_name.human), spree.admin_shipping_methods_path, class: 'btn btn-primary' %>
 <% end %>
 
 <%= render 'form' %>

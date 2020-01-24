@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= I18n.t(:'spree.editing_resource', resource: Spree::Store.model_name.human) %>
+  <%= t(:'spree.editing_resource', resource: Spree::Store.model_name.human) %>
 <% end %>
 
 <%= render 'settings' %>
