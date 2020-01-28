@@ -1,10 +1,10 @@
 <!-- insert_bottom '[data-hook="localization_settings_body"]' -->
 <div class="form-group">
   <label for="supported_locales_">
-    <%= Spree.t(:'i18n.supported_locales') %>
+    <%= t(:'spree.i18n.supported_locales') %>
   </label>
   <%= select_supported_locales %>
   <p class="help-block">
-    <%= Spree.t(:'globalize.locales_displayed_on_translation_forms') %>
+    <%= t(:'spree.globalize.locales_displayed_on_translation_forms') %>
   </p>
 </div>

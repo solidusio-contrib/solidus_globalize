@@ -1,9 +1,9 @@
 <% content_for :page_title do %>
-  <%= Spree.t(:editing_resource, resource: Spree::OptionValue.model_name.human) %> <span class="green">"<%= @option_value.name %>"</span>
+  <%= t(:'spree.editing_resource', resource: Spree::OptionValue.model_name.human) %> <span class="green">"<%= @option_value.name %>"</span>
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= button_link_to Spree.t(:back_to_resource_list, resource: Spree::OptionValue.model_name.human), spree.edit_admin_option_type_path(@option_value.option_type), class: 'btn-primary', icon: 'arrow-left' %>
+  <%= link_to t(:'spree.back_to_resource_list', resource: Spree::OptionValue.model_name.human), spree.edit_admin_option_type_path(@option_value.option_type), class: 'btn btn-primary' %>
 <% end %>
 
 <%= render 'settings' %>
@@ -15,10 +15,10 @@
   <div class="col-md-8">
     <%= form_for [:admin, :option_type, @resource] do |f| %>
       <%= render 'form_fields', f: f %>
-      <div class="form-actions" data-hook="buttons">
-        <%= button Spree.t(:update), 'update' %>
-        <span class="or"><%= Spree.t(:or) %></span>
-        <%= button_link_to Spree.t(:cancel), spree.edit_admin_option_type_path(@option_value.option_type), icon: 'remove' %>
+
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button_tag t('spree.actions.update'), class: 'btn btn-primary' %>
+        <%= link_to t('spree.actions.cancel'), spree.edit_admin_option_type_path(@option_value.option_type), class: 'button' %>
       </div>
     <% end %>
   </div>

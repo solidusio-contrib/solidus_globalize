@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= Spree.t(:editing_resource, resource: Spree::Store.model_name.human) %>
+  <%= t(:'spree.editing_resource', resource: Spree::Store.model_name.human) %>
 <% end %>
 
 <%= render 'settings' %>
@@ -11,10 +11,10 @@
   <div class="col-md-8">
     <%= form_for [:admin, @resource], url: spree.admin_general_settings_path do |f| %>
       <%= render 'form_fields', f: f %>
-      <div class="form-actions" data-hook="buttons">
-        <%= button Spree.t('actions.update'), 'refresh', 'submit', {class: 'btn-success'} %>
-        <span class="or"><%= Spree.t(:or) %></span>
-        <%= button_link_to Spree.t('actions.cancel'), spree.edit_admin_general_settings_path, icon: 'delete' %>
+
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button_tag t('spree.actions.update'), class: 'btn btn-primary' %>
+        <%= link_to t('spree.actions.cancel'), spree.edit_admin_general_settings_path, class: 'button' %>
       </div>
     <% end %>
   </div>

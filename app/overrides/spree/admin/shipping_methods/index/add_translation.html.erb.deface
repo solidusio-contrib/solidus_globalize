@@ -1,2 +1,2 @@
 <!-- insert_bottom 'td.actions' -->
-<%= link_to_with_icon 'globe', nil, spree.admin_translations_path('shipping_methods', shipping_method.id), title: Spree.t(:'i18n.translations'), no_text: true %>
+<%= link_to_with_icon 'globe', nil, spree.admin_translations_path('shipping_methods', shipping_method.id), title: t(:'spree.i18n.translations'), no_text: true %>
