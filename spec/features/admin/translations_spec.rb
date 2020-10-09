@@ -226,17 +226,20 @@ RSpec.describe "Translations", :js do
   end
 
   context "store" do
-    pending 'saves translated attributes properly' do
+    it 'saves translated attributes properly' do
       visit spree.edit_admin_general_settings_path
-      click_link I18n.t(:configurations)
       click_link I18n.t(:'spree.globalize.store_translations')
+      select2("pt-BR", from: 'Select Locale')
 
       within("#attr_fields .name.pt-BR") { fill_in_name "nome store" }
       click_on "Update"
 
       visit spree.admin_translations_path('stores', store)
+      select2("pt-BR", from: 'Select Locale')
 
-      expect(page).to have_selector("input[value='nome store']")
+      within("#attr_fields .name.pt-BR") do
+        expect(page).to have_field(with: 'nome store')
+      end
     end
   end
 
