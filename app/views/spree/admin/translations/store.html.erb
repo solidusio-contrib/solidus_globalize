@@ -2,6 +2,12 @@
   <%= t(:'spree.editing_resource', resource: Spree::Store.model_name.human) %>
 <% end %>
 
+<% content_for :page_actions do %>
+  <%= link_to t(:'spree.back_to_resource_list', resource: Spree::Store.model_name.human), spree.admin_stores_path, class: 'btn btn-primary' %>
+<% end %>
+
+<%= render 'spree/admin/shared/general_tabs' %>
+
 <%= render 'settings' %>
 
 <div class="row translations">
@@ -9,7 +15,7 @@
     <%= render 'fields' %>
   </div>
   <div class="col-md-8">
-    <%= form_for [:admin, @resource], url: spree.admin_general_settings_path do |f| %>
+    <%= form_for [:admin, @resource] do |f| %>
       <%= render 'form_fields', f: f %>
 
       <div class="form-buttons filter-actions actions" data-hook="buttons">
