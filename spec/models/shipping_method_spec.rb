@@ -14,6 +14,11 @@ module Spree
         soft_deleting
         expect(shipping_method.translations).not_to be_empty
       end
+
+      it "deleted_at set on reload" do
+        soft_deleting
+        expect(shipping_method.translations.first.deleted_at).not_to be_nil
+      end
     end
   end
 end
