@@ -13,8 +13,8 @@ module SolidusGlobalize
         end
       end
 
-      if SolidusSupport.solidus_gem_version >= Gem::Version.new("2.0") &&
-         SolidusSupport.solidus_gem_version < Gem::Version.new("2.3")
+      if ::Spree.solidus_gem_version >= Gem::Version.new("2.0") &&
+         ::Spree.solidus_gem_version < Gem::Version.new("2.3")
         ::Spree::Admin::ResourceController.prepend self
       end
     end
