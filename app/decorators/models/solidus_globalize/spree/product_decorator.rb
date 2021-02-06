@@ -22,8 +22,10 @@ module SolidusGlobalize
           end
 
           translation_class.class_eval do
-            acts_as_paranoid
-            include ::Spree::ParanoiaDeprecations
+            if defined?(Paranoia)
+              acts_as_paranoid
+              include ::Spree::ParanoiaDeprecations
+            end
 
             include Discard::Model
             self.discard_column = :deleted_at

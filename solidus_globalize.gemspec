@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   if s.respond_to?(:metadata)
     s.metadata["homepage_uri"] = s.homepage if s.homepage
-    s.metadata["source_code_uri"] = s.homepage if s.homepage
+    s.metadata["source_code_uri"] = 'https://github.com/solidusio-contrib/solidus_globalize'
   end
 
   s.required_ruby_version = '~> 2.4'
