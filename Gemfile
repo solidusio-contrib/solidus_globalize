@@ -14,10 +14,7 @@ gem 'rails', '>0.a'
 # Provides basic authentication functionality for testing parts of your engine
 # gem 'solidus_auth_devise'
 
-unless %w[v2.9 v2.10].include? branch
-  # We use routing-filter to test the gem only. This version works with Rails 6.1 as well.
-  gem 'routing-filter', github: "hasghari/routing-filter", branch: "rails-6.1" 
-end
+gem 'routing-filter', github: "svenfuchs/routing-filter", branch: "master" 
 
 case ENV['DB']
 when 'mysql'
