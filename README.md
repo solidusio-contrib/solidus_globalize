@@ -65,6 +65,16 @@ into an initializer:
 SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
 ```
 
+Additionally, the translatable fields on individual models can be adjusted with configuration:
+
+```ruby
+SolidusGlobalize::Config[:translatable_fields].merge!(
+  {
+    'Spree::OptionValue' => [:presentation]
+  }
+)
+```
+
 **PS 1.** The languages you add to this configuration need to be supported by
 your store. This means that you need to have a transations file for them
 into `/config/locales/` (eg. `/config/locales/pt-BR.yml`).
