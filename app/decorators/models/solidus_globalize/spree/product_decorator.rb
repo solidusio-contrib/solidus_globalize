@@ -8,7 +8,9 @@ module SolidusGlobalize
         base.class_eval do
           translates(*translatable_fields, fallbacks_for_empty_translations: true)
 
-          friendly_id :slug_candidates, use: [:history, :globalize]
+          if translatable_fields.include?(:slug)
+            friendly_id :slug_candidates, use: [:history, :globalize]
+          end
 
           include SolidusGlobalize::Translatable
 
