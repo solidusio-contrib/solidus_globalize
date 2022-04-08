@@ -14,7 +14,7 @@ gem 'rails', '>0.a'
 # Provides basic authentication functionality for testing parts of your engine
 # gem 'solidus_auth_devise'
 
-gem 'routing-filter', github: "svenfuchs/routing-filter", branch: "master" 
+gem 'routing-filter'
 
 case ENV['DB']
 when 'mysql'
