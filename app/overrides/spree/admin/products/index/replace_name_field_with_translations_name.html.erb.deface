@@ -1,0 +1,3 @@
+<!-- replace_contents '[data-hook="admin_products_index_search"] > div:first-child .field' -->
+<%= f.label :translations_name_cont, Spree::Product.human_attribute_name(:name) %>
+<%= f.text_field :translations_name_cont, size: 15 %>
