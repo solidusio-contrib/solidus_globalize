@@ -11,6 +11,10 @@ RSpec.describe "Translations" do
           Spree::Product::Translation.new(
             locale: 'pt-BR',
             name: 'Antimatéria'
+          ),
+          Spree::Product::Translation.new(
+            locale: 'en',
+            name: 'Antimatter'
           )
         ])
     end

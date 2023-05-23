@@ -26,12 +26,12 @@ RSpec.describe "Translations", :js do
         click_on "Translations"
 
         within("#attr_fields .name.en") { fill_in_name "Pearl Jam" }
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .name.pt-BR") { fill_in_name "Geleia de perola" }
         click_on "Update"
 
         click_on "Translations"
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .name.pt-BR") do
           expect(page).to have_field(with: 'Geleia de perola')
         end
@@ -45,14 +45,14 @@ RSpec.describe "Translations", :js do
         visit spree.admin_product_product_properties_path(product_property.product)
         within_row(1) { click_icon :globe }
         click_on "Value"
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .value.pt-BR") { fill_in_name "vermelho" }
         click_on "Update"
 
         visit spree.admin_product_product_properties_path(product_property.product)
         within_row(1) { click_icon :globe }
         click_on "Value"
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .value.pt-BR") do
           expect(page).to have_field(with: 'vermelho')
         end
@@ -68,14 +68,14 @@ RSpec.describe "Translations", :js do
         within("#attr_fields .name.en") { fill_in_name "shirt sizes" }
         within("#attr_list") { click_on "Presentation" }
         within("#attr_fields .presentation.en") { fill_in_name "size" }
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .presentation.pt-BR") { fill_in_name "tamanho" }
         click_on "Update"
 
         visit spree.admin_option_types_path
         within_row(1) { click_icon :globe }
         within("#attr_list") { click_on "Presentation" }
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .presentation.pt-BR") do
           expect(page).to have_field(with: 'tamanho')
         end
@@ -104,14 +104,14 @@ RSpec.describe "Translations", :js do
         within("#attr_fields .name.en") { fill_in_name "big" }
         within("#attr_list") { click_on "Presentation" }
         within("#attr_fields .presentation.en") { fill_in_name "big" }
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .presentation.pt-BR") { fill_in_name "grande" }
         click_on "Update"
 
         visit spree.admin_option_types_path
         within_row(1) { click_icon :globe }
         within("#attr_list") { click_on "Presentation" }
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .presentation.pt-BR") do
           expect(page).to have_field(with: 'grande')
         end
@@ -124,20 +124,20 @@ RSpec.describe "Translations", :js do
       it "saves translated attributes properly" do
         visit spree.admin_properties_path
         within_row(1) { click_icon :globe }
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .name.pt-BR") { fill_in_name "Modelo" }
 
         within("#attr_list") { click_on "Presentation" }
         select2("en", from: 'Select Locale')
         within("#attr_fields .presentation.en") { fill_in_name "Model" }
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .presentation.pt-BR") { fill_in_name "Modelo" }
         click_on "Update"
 
         visit spree.admin_properties_path
         within_row(1) { click_icon :globe }
         within("#attr_list") { click_on "Presentation" }
-        select2("pt-BR", from: 'Select Locale')
+        select2("pt-BR", from: 'Select locale')
         within("#attr_fields .presentation.pt-BR") do
           expect(page).to have_field(with: 'Modelo')
         end
@@ -153,13 +153,13 @@ RSpec.describe "Translations", :js do
       within_row(1) { click_icon :globe }
 
       within("#attr_fields .name.en") { fill_in_name "All free" }
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .name.pt-BR") { fill_in_name "Salve salve" }
       click_on "Update"
 
       visit spree.admin_promotions_path
       within_row(1) { click_icon :globe }
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .name.pt-BR") do
         expect(page).to have_field(with: 'Salve salve')
       end
@@ -182,13 +182,13 @@ RSpec.describe "Translations", :js do
       within_row(1) { click_icon :globe }
 
       within("#attr_fields .name.en") { fill_in_name "Guitars" }
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .name.pt-BR") { fill_in_name "Guitarras" }
       click_on "Update"
 
       visit spree.admin_taxonomies_path
       within_row(1) { click_icon :globe }
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .name.pt-BR") do
         expect(page).to have_field(with: 'Guitarras')
       end
@@ -203,7 +203,7 @@ RSpec.describe "Translations", :js do
       visit spree.admin_translations_path('taxons', taxon.id)
 
       within("#attr_fields .name.en") { fill_in_name "Acoustic" }
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .name.pt-BR") { fill_in_name "Acusticas" }
       click_on "Update"
 
@@ -218,7 +218,7 @@ RSpec.describe "Translations", :js do
       expect(taxonomy.root.children.count).to be(1)
 
       visit spree.admin_translations_path('taxons', taxon.id)
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .name.pt-BR") do
         expect(page).to have_field(with: 'Acusticas')
       end
@@ -229,13 +229,13 @@ RSpec.describe "Translations", :js do
     it 'saves translated attributes properly' do
       visit spree.edit_admin_general_settings_path
       click_link I18n.t(:'spree.globalize.store_translations')
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
 
       within("#attr_fields .name.pt-BR") { fill_in_name "nome store" }
       click_on "Update"
 
       visit spree.admin_translations_path('stores', store)
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
 
       within("#attr_fields .name.pt-BR") do
         expect(page).to have_field(with: 'nome store')
@@ -251,12 +251,12 @@ RSpec.describe "Translations", :js do
       visit spree.admin_translations_path('shipping_methods', shipping_method.id)
 
       within("#attr_fields .name.en") { fill_in_name "Urgent elivery" }
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .name.pt-BR") { fill_in_name "Entrega urgente" }
       click_on "Update"
 
       visit spree.admin_translations_path('shipping_methods', shipping_method.id)
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .name.pt-BR") do
         expect(page).to have_field(with: 'Entrega urgente')
       end
@@ -300,13 +300,13 @@ RSpec.describe "Translations", :js do
       click_on "Translations"
 
       click_on "Name"
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .name.pt-BR") { fill_in_name "Produtos" }
 
       click_on "Slug"
       select2("en", from: 'Select Locale')
       within("#attr_fields .slug.en") { fill_in_name "en_link" }
-      select2("pt-BR", from: 'Select Locale')
+      select2("pt-BR", from: 'Select locale')
       within("#attr_fields .slug.pt-BR") { fill_in_name "pt-BR_link" }
 
       click_on "Update"
