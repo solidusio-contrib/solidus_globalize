@@ -27,12 +27,12 @@ class AddTranslationsToMainModels < SolidusSupport::Migration[4.2]
       Spree::Taxonomy.create_translation_table!({ name: :string }, migrate_data: true)
     end
 
-    unless table_exists?(:spree_taxon_translations)
-      params = { name: :string, description: :text, meta_title: :string,
-                 meta_description: :string, meta_keywords: :string,
-                 permalink: :string }
-      Spree::Taxon.create_translation_table!(params, migrate_data: true)
-    end
+    return if table_exists?(:spree_taxon_translations)
+
+    params = { name: :string, description: :text, meta_title: :string,
+               meta_description: :string, meta_keywords: :string,
+               permalink: :string }
+    Spree::Taxon.create_translation_table!(params, migrate_data: true)
   end
 
   def down
