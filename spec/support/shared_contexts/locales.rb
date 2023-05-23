@@ -3,8 +3,8 @@
 shared_context 'with pt-BR locale file in place' do
   before do
     I18n.backend.store_translations(:'pt-BR', spree: {
-                                      i18n: { this_file_language: "Português brasileiro" },
-                                    })
+      i18n: { this_file_language: "Português brasileiro" },
+    })
   end
 
   after do

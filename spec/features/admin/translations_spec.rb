@@ -212,7 +212,7 @@ RSpec.describe "Translations", :js do
       # ensure we're not duplicating translated records on database
       expect {
         click_on "Update"
-      }.not_to change { taxon.translations.count }
+      }.not_to(change { taxon.translations.count })
 
       # ensure taxon is in root or it will not be visible
       expect(taxonomy.root.children.count).to be(1)

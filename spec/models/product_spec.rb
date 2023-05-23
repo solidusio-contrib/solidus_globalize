@@ -36,20 +36,20 @@ module Spree
 
         it "with name" do
           product.translations.create locale: "zh-CN",
-                                      name: "创意马克杯",
-                                      description: "<p>一流工程师设计制造手工艺品</p>",
-                                      meta_description: '顶尖工艺设计',
-                                      meta_keywords: '工艺品'
+            name: "创意马克杯",
+            description: "<p>一流工程师设计制造手工艺品</p>",
+            meta_description: '顶尖工艺设计',
+            meta_keywords: '工艺品'
 
           expect(described_class.like_any([:name], ['创意'])).to include(product)
         end
 
         it "with name or description" do
           product.translations.create locale: "zh-CN",
-                                      name: "创意马克杯",
-                                      description: "<p>一流工程师设计制造手工艺品</p>",
-                                      meta_description: '顶尖工艺设计',
-                                      meta_keywords: '工艺品'
+            name: "创意马克杯",
+            description: "<p>一流工程师设计制造手工艺品</p>",
+            meta_description: '顶尖工艺设计',
+            meta_keywords: '工艺品'
 
           expect(described_class.like_any([:name, :description], ['手工艺品'])).to include(product)
         end
