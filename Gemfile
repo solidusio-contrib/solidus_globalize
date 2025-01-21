@@ -24,7 +24,6 @@ gem 'rails', '>0.a'
 # gem 'solidus_auth_devise'
 
 gem 'friendly_id-globalize', github: 'norman/friendly_id-globalize', branch: "master"
-gem 'routing-filter'
 
 case ENV['DB']
 when 'mysql'
