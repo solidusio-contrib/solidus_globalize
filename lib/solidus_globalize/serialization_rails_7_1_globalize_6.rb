@@ -9,12 +9,12 @@ module SerializationRails71Globalize6
     if class_name_or_coder.nil?
       globalize_serialized_attributes[attr_name] = options
 
-      super(attr_name, **options)
+      super(attr_name, options[:type] || Object, **options)
     elsif class_name_or_coder.is_a?(Hash)
       globalize_serialized_attributes[attr_name] = class_name_or_coder
 
       # https://github.com/rails/rails/blob/7-2-stable/activerecord/lib/active_record/attribute_methods/serialization.rb#L183
-      super(attr_name, **class_name_or_coder)
+      super(attr_name, class_name_or_coder[:type] || Object, **class_name_or_coder)
     else
       globalize_serialized_attributes[attr_name] = [class_name_or_coder, options]
 
