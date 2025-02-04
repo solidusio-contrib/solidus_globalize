@@ -38,6 +38,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'pry-rails', '>= 0.3.0'
-  s.add_development_dependency 'routing-filter', '~> 0.6'
   s.add_development_dependency 'solidus_dev_support'
 end

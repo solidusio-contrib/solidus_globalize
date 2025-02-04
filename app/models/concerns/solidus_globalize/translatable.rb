@@ -13,6 +13,18 @@ module SolidusGlobalize
         klass.allowed_ransackable_associations ||= []
         klass.allowed_ransackable_associations |= ['translations']
       end
+
+      klass.const_set("TranslationRansackable", Module.new).module_eval do
+        def ransackable_attributes(*_args)
+          authorizable_ransackable_attributes
+        end
+
+        def ransackable_associations(*_args)
+          authorizable_ransackable_associations
+        end
+
+        "#{klass}::Translation".constantize.singleton_class.prepend(self)
+      end
     end
 
     class_methods do

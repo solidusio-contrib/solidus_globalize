@@ -4,16 +4,13 @@ module SolidusGlobalize
   module Spree
     module ProductDecorator
       def self.prepended(base)
+        translatable_fields = ::SolidusGlobalize::Config.translatable_fields[base.to_s]
         base.class_eval do
-          translates :name,
-            :description,
-            :meta_description,
-            :meta_keywords,
-            :meta_title,
-            :slug,
-            fallbacks_for_empty_translations: true
+          translates(*translatable_fields, fallbacks_for_empty_translations: true)
 
-          friendly_id :slug_candidates, use: [:history, :globalize]
+          if translatable_fields.include?(:slug)
+            friendly_id :slug_candidates, use: [:history, :globalize]
+          end
 
           include SolidusGlobalize::Translatable
 

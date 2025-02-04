@@ -314,7 +314,7 @@ RSpec.describe "Translations", :js do
       visit spree.product_path 'en_link'
       expect(page).to have_text_like 'Product'
 
-      visit '/pt-BR/products/pt-BR_link'
+      visit '/products/pt-BR_link?locale=pt-BR'
       expect(page).to have_text_like 'Produtos'
     end
   end
