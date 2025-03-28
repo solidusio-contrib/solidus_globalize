@@ -2,7 +2,8 @@
 
 class AddLocaleToFriendlyIdSlugs < SolidusSupport::Migration[4.2]
   def change
-    add_column :friendly_id_slugs, :locale, :string, length: 2, null: false, after: :scope
+    # Added default to prevent not null constraint violation.
+    add_column :friendly_id_slugs, :locale, :string, length: 2, default: 'en', null: false, after: :scope
 
     remove_index :friendly_id_slugs, [:slug, :sluggable_type]
     add_index :friendly_id_slugs, [:slug, :sluggable_type, :locale],
