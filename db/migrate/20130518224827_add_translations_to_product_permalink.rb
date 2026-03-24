@@ -3,15 +3,16 @@
 class AddTranslationsToProductPermalink < SolidusSupport::Migration[4.2]
   def up
     fields = if column_exists?(:spree_products, :permalink)
-               { permalink: :string }
-             else
-               { slug: :string }
-             end
+      {permalink: :string}
+    else
+      {slug: :string}
+    end
 
     return if column_exists?(:spree_product_translations, fields.keys.first)
 
     Spree::Product.add_translation_fields!(fields, migrate_data: true)
   end
 
-  def down; end
+  def down
+  end
 end

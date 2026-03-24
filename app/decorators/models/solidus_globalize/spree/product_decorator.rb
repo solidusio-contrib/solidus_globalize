@@ -25,6 +25,7 @@ module SolidusGlobalize
             end
 
             include Discard::Model
+
             self.discard_column = :deleted_at
 
             # Paranoid sets the default scope and Globalize rewrites all query methods.
@@ -57,7 +58,8 @@ module SolidusGlobalize
 
       # Don't punch slug on original product as it prevents bulk deletion.
       # Also we don't need it, as it is translated.
-      def punch_slug; end
+      def punch_slug
+      end
 
       def duplicate_extra(old_product)
         duplicate_translations(old_product)

@@ -2,11 +2,11 @@
 
 module Spree
   RSpec.describe Taxon, type: :model do
-    describe '.ransack' do
-      let!(:taxon) { create(:taxon, name: 'find-me') }
-      let!(:other_taxon) { create(:taxon, name: 'no-thanks') }
+    describe ".ransack" do
+      let!(:taxon) { create(:taxon, name: "find-me") }
+      let!(:other_taxon) { create(:taxon, name: "no-thanks") }
 
-      it 'handles translation' do
+      it "handles translation" do
         result = described_class.ransack(name_cont: taxon.name[0..2]).result
         expect(result.to_a).to eq [taxon]
 

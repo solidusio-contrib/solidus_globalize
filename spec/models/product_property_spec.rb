@@ -5,7 +5,7 @@ module Spree
     context 'when ::ignored_columns include the "value" field' do
       before do
         if described_class.respond_to? :ignored_columns
-          described_class.ignored_columns = ['value']
+          described_class.ignored_columns = ["value"]
           described_class.reset_column_information
         end
       end

@@ -19,7 +19,7 @@ shared_context "behaves as translatable" do
       SolidusGlobalize::Config.supported_locales = [:en, :es]
       SolidusGlobalize::Fallbacks.config!
 
-      model[attribute] = 'English'
+      model[attribute] = "English"
     end
 
     it "falls back to default locale" do
@@ -36,7 +36,7 @@ shared_context "behaves as translatable" do
       SolidusGlobalize::Config.supported_locales = [:en, :es, :de]
       SolidusGlobalize::Fallbacks.config!
 
-      model[attribute] = 'produto'
+      model[attribute] = "produto"
     end
 
     it "falls back to not default translations" do
@@ -52,7 +52,7 @@ shared_context "behaves as translatable" do
       SolidusGlobalize::Config.supported_locales = [:es, :en, :de]
       SolidusGlobalize::Fallbacks.config!
 
-      model[attribute] = 'product'
+      model[attribute] = "product"
     end
 
     it "falls back to default locale first" do

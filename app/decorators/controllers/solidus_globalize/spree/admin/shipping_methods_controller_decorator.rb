@@ -7,11 +7,11 @@ module SolidusGlobalize
         private
 
         def set_shipping_category
-          super unless params['shipping_method'][:translations_attributes]
+          super unless params["shipping_method"][:translations_attributes]
         end
 
         def set_zones
-          super unless params['shipping_method'][:translations_attributes]
+          super unless params["shipping_method"][:translations_attributes]
         end
 
         ::Spree::Admin::ShippingMethodsController.prepend self

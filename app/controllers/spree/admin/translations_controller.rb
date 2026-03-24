@@ -4,7 +4,7 @@ module Spree
   module Admin
     class TranslationsController < BaseController
       before_action :load_parent
-      helper 'solidus_globalize/locale'
+      helper "solidus_globalize/locale"
       helper_method :collection_url
 
       def index
@@ -33,16 +33,16 @@ module Spree
 
       def resource
         @resource ||= if slugged_models.include? klass.class_name
-                        klass.friendly.find(params[:resource_id])
-                      else
-                        klass.find(params[:resource_id])
-                      end
+          klass.friendly.find(params[:resource_id])
+        else
+          klass.find(params[:resource_id])
+        end
       end
 
       def collection_url
         ActionController::Routing::Routes.recognize_path("admin_#{resource_name}_url", @resource)
         send "admin_#{resource_name}_url", @resource
-      rescue StandardError
+      rescue
         send "edit_admin_#{resource_name}_url", @resource
       end
 

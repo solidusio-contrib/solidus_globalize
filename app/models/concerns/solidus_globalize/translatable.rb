@@ -6,15 +6,15 @@ module SolidusGlobalize
 
     included do |klass|
       accepts_nested_attributes_for :translations
-      if ::Spree.solidus_gem_version < Gem::Version.new('3.3')
-        klass.whitelisted_ransackable_associations  ||= []
-        klass.whitelisted_ransackable_associations |= ['translations']
+      if ::Spree.solidus_gem_version < Gem::Version.new("3.3")
+        klass.whitelisted_ransackable_associations ||= []
+        klass.whitelisted_ransackable_associations |= ["translations"]
       else
         klass.allowed_ransackable_associations ||= []
-        klass.allowed_ransackable_associations |= ['translations']
+        klass.allowed_ransackable_associations |= ["translations"]
       end
 
-      klass.const_set("TranslationRansackable", Module.new).module_eval do
+      klass.const_set(:TranslationRansackable, Module.new).module_eval do
         def ransackable_attributes(*_args)
           authorizable_ransackable_attributes
         end
@@ -41,9 +41,9 @@ module SolidusGlobalize
           end
         end
 
-        super(params, options)
+        super
       end
-      alias :search :ransack unless respond_to? :search
+      alias_method :search, :ransack unless respond_to? :search
 
       # preload translations
       def spree_base_scopes
