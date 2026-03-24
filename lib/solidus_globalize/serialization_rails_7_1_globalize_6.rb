@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'globalize'
+require "globalize"
 
 module SerializationRails71Globalize6
   def serialize(attr_name, class_name_or_coder = nil, **options)
@@ -20,12 +20,12 @@ module SerializationRails71Globalize6
 
       # this is only needed for ACTIVE_RECORD_71. class_name_or_coder will be removed with Rails 7.2
       # https://github.com/rails/rails/blob/7-1-stable/activerecord/lib/active_record/attribute_methods/serialization.rb#L183
-      super(attr_name, class_name_or_coder, **options)
+      super
     end
   end
 
-  if Rails.gem_version >= Gem::Version.new('7.1') &&
-    Gem.loaded_specs["globalize"]&.version&.public_send(:<, "7")
+  if Rails.gem_version >= Gem::Version.new("7.1") &&
+      Gem.loaded_specs["globalize"]&.version&.public_send(:<, "7")
     Globalize::AttributeMethods::Serialization.prepend(self)
   end
 end

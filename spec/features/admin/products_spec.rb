@@ -10,7 +10,7 @@ RSpec.describe "Products", :js do
     it "doesnt blow up" do
       visit spree.admin_products_path
       click_icon :copy
-      expect(page).to have_selector '.flash', text: 'Product has been cloned', visible: false
+      expect(page).to have_selector ".flash", text: "Product has been cloned", visible: false
     end
   end
 end

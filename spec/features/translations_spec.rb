@@ -1,42 +1,42 @@
 # frozen_string_literal: true
 
 RSpec.describe "Translations" do
-  include_context 'with pt-BR locale file in place'
+  include_context "with pt-BR locale file in place"
 
-  context 'product' do
+  context "product" do
     let!(:product) do
       create(:product,
-        name: 'Antimatter',
+        name: "Antimatter",
         translations: [
           Spree::Product::Translation.new(
-            locale: 'pt-BR',
-            name: 'Antimatéria'
+            locale: "pt-BR",
+            name: "Antimatéria"
           ),
           Spree::Product::Translation.new(
-            locale: 'en',
-            name: 'Antimatter'
+            locale: "en",
+            name: "Antimatter"
           )
         ])
     end
 
     around do |example|
-      I18n.locale = 'pt-BR'
-      SolidusGlobalize::Config.supported_locales = [:en, :'pt-BR']
+      I18n.locale = "pt-BR"
+      SolidusGlobalize::Config.supported_locales = [:en, :"pt-BR"]
 
       example.run
 
-      I18n.locale = 'en'
+      I18n.locale = "en"
       SolidusGlobalize::Config.supported_locales = [:en]
     end
 
-    it 'displays translated product page' do
-      visit '/products/antimatter?locale=pt-BR'
-      expect(page.title).to have_content('Antimatéria')
+    it "displays translated product page" do
+      visit "/products/antimatter?locale=pt-BR"
+      expect(page.title).to have_content("Antimatéria")
     end
 
-    it 'displays translated products list' do
-      visit '/products?locale=pt-BR'
-      expect(page).to have_content('Antimatéria')
+    it "displays translated products list" do
+      visit "/products?locale=pt-BR"
+      expect(page).to have_content("Antimatéria")
     end
   end
 end

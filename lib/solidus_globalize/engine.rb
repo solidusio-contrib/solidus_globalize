@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'spree/core'
-require 'globalize'
-require 'friendly_id/globalize'
+require "spree/core"
+require "globalize"
+require "friendly_id/globalize"
 
 module SolidusGlobalize
   class Engine < Rails::Engine
@@ -10,7 +10,7 @@ module SolidusGlobalize
 
     isolate_namespace ::Spree
 
-    engine_name 'solidus_globalize'
+    engine_name "solidus_globalize"
 
     initializer "solidus_globalize.environment", before: :load_config_initializers do
       SolidusGlobalize::Config = SolidusGlobalize::Configuration.new
@@ -26,7 +26,7 @@ module SolidusGlobalize
           :permalink,
           :meta_description,
           :meta_keywords,
-          :meta_title,
+          :meta_title
         ]
       }
       Spree::PermittedAttributes.taxon_attributes << taxon_attributes
@@ -36,7 +36,7 @@ module SolidusGlobalize
           :id,
           :locale,
           :name,
-          :presentation,
+          :presentation
         ]
       }
       Spree::PermittedAttributes.option_value_attributes << option_value_attributes
@@ -48,7 +48,7 @@ module SolidusGlobalize
           :name,
           :meta_description,
           :meta_keywords,
-          :seo_title,
+          :seo_title
         ]
       }
       Spree::PermittedAttributes.store_attributes << store_attributes

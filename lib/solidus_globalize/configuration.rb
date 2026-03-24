@@ -13,9 +13,9 @@ module SolidusGlobalize
 
     preference(:translatable_fields, :hash,
       default: {
-        'Spree::OptionType' => [:name, :presentation],
-        'Spree::OptionValue' => [:name, :presentation],
-        'Spree::Product' => [
+        "Spree::OptionType" => [:name, :presentation],
+        "Spree::OptionValue" => [:name, :presentation],
+        "Spree::Product" => [
           :name,
           :description,
           :meta_description,
@@ -23,17 +23,17 @@ module SolidusGlobalize
           :meta_title,
           :slug
         ],
-        'Spree::ProductProperty' => [:value],
-        'Spree::Promotion' => [:name, :description],
-        'Spree::Property' => [:name, :presentation],
-        'Spree::ShippingMethod' => [:name],
-        'Spree::Store' => [
+        "Spree::ProductProperty" => [:value],
+        "Spree::Promotion" => [:name, :description],
+        "Spree::Property" => [:name, :presentation],
+        "Spree::ShippingMethod" => [:name],
+        "Spree::Store" => [
           :name,
           :meta_description,
           :meta_keywords,
           :seo_title
         ],
-        'Spree::Taxon' => [
+        "Spree::Taxon" => [
           :name,
           :description,
           :meta_title,
@@ -41,7 +41,7 @@ module SolidusGlobalize
           :meta_keywords,
           :permalink
         ],
-        'Spree::Taxonomy' => [:name],
+        "Spree::Taxonomy" => [:name]
       })
   end
 end

@@ -2,7 +2,7 @@
 
 class AddTranslationMetaTitleToProduct < SolidusSupport::Migration[4.2]
   def up
-    Spree::Product.add_translation_fields!({ meta_title: :string }, migrate_data: true)
+    Spree::Product.add_translation_fields!({meta_title: :string}, migrate_data: true)
   end
 
   def down

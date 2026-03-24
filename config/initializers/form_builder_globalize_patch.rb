@@ -44,9 +44,9 @@ module ActionView
       def globalize_fields_for(locale, *args, &proc)
         raise ArgumentError, "Missing block" unless block_given?
 
-        @index      = @index ? @index + 1 : 1
+        @index = @index ? @index + 1 : 1
         object_name = "#{@object_name}[translations_attributes][#{@index}]"
-        object      = @object.translation_for(locale)
+        object = @object.translation_for(locale)
         @template.concat @template.hidden_field_tag("#{object_name}[id]", object ? object.id : "")
         @template.concat @template.hidden_field_tag("#{object_name}[locale]", locale)
         @template.fields_for(object_name, object, *args, &proc)
