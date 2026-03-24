@@ -1,0 +1,6 @@
+parallel: true
+format: progress
+ruby_version: 4.0
+ignore:
+  - "*/spec/dummy/**/*"
+  - "sandbox/**/*"

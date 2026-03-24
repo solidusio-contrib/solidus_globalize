@@ -34,6 +34,10 @@ else
   gem 'sqlite3'
 end
 
+group :lint do
+  gem 'standard', '~> 1.50', require: false
+end
+
 gemspec
 
 # Use a local Gemfile to include development dependencies that might not be
